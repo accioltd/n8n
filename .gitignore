@@ -2,4 +2,4 @@ archive/
 credentials/
 workflows/
 .env
-
+.DS_Store
