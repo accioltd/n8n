@@ -3,3 +3,16 @@ archive/
 credentials/
 .env
 .DS_Store
+
+# Backup files
+*.bak
+*.backup
+*.tmp
+
+# Node modules
+node_modules/
+npm-debug.log*
+
+# Build output
+dist/
+build/

@@ -1,0 +1,99 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.2,
+      "position": [280, 0],
+      "id": "da2b2f88-7fb1-4ef6-8e9b-415b6ad16587",
+      "name": "Respond to Prepare Plan"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "report/planner",
+        "responseMode": "responseNode",
+        "options": {
+          "allowedOrigins": "*"
+        }
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [-280, 0],
+      "id": "b81f30e8-5037-48fe-bb7a-d5de5d8fbca7",
+      "name": "Prepare Plan",
+      "webhookId": "a7a254f8-0f98-4358-8079-e2e18d854faf"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=This is a report structure that the user wants to generate.\n\n{{ $json.body.data }}\n\nYour job is to split this report into the smaller subsections provided by the clent, for another AI agent to generate the content in sequence. Each item should represent a report section. Sequence does not mean chapter order — for example, the executive summary should come last, since it depends on all other content being complete. Use judgment to define the logical writing sequence independent of array position. The order field must reflect that logical writing order, and the order numbers cannot repeat, ensure in the end this is correct.\n\nEach output object must contain:\n\nlevel: hierarchical section level (e.g., \"2.a\", \"3.c.1\")\nheadingNumber: 1 for the title, 2 for sections, 3 for 2-level sections (e.g. \"2.a\"), 3 for 3-level sections (e.g. \"2.a.1\")\ntitle: section title\nplan: short instruction (1–3 sentences) to guide an agent on what to include and avoid\norder: integer indicating final report sequencing (e.g. 1, 2, 3...). Do not assign it based on position in the array — assign it based on logical writing sequence. For example, the executive summary may appear last in the array but should always have the lowest order number (e.g. order: 1).\n\nDo not generate the report itself. Your job is only to return the plan for each section.\n\nYou must return a JSON array with at least 5 objects. The response must be only the array. No markdown. No prose. No explanation. No wrapping. No \"assistant\" or \"user\" fields. Just the raw array, nothing else.\n\nHere is the required output format:\n\n[\n{\n\"level\": \"2.a.1\",\n\"title\": \"Example Title\",\n\"plan\": \"Explain X, avoid Y, mention Z\",\n\"order\": 12 // this is not the array order, but order this element will be rendered on the report\n},\n...\n]\n\nThe order: 1 element should be the title, and it will be the only heading 1.\nStart from the most foundational section and end with the executive summary. Respect the user choices as much as possible.\nAgain: no wrapping, no commentary — only return the array.",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [-80, 0],
+      "id": "a3422aec-adb2-4191-a4c6-435b61f15f26",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "o4-mini",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAzureOpenAi",
+      "typeVersion": 1,
+      "position": [-120, 200],
+      "id": "14c4bfb1-2293-4995-b0eb-5d49c3eb6a1a",
+      "name": "Azure Model",
+      "credentials": {
+        "azureOpenAiApi": {
+          "id": "yVFddKVO6yEmkXaa",
+          "name": "Azure Open AI o4"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Prepare Plan": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Respond to Prepare Plan",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Azure Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ab05c32f8e94331cd8255d6a3b748aa8912915e470c28d0e230fb292b2bee13b"
+  }
+}

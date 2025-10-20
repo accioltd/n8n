@@ -1,0 +1,25 @@
+{
+  "name": "n8n-nodes-c3drive-custom",
+  "version": "1.0.0",
+  "description": "Custom C3Drive nodes for n8n",
+  "main": "index.js",
+  "n8n": {
+    "nodes": [
+      "nodes/C3Drive/C3DriveSaveFile.node.js",
+      "nodes/C3Drive/C3DriveReadFile.node.js",
+      "nodes/C3Drive/C3DriveDeleteFile.node.js",
+      "nodes/C3Drive/C3DriveCreateFolder.node.js",
+      "nodes/C3Drive/C3DriveListFolders.node.js",
+      "nodes/C3Drive/C3DriveListFiles.node.js",
+      "nodes/C3Drive/C3DriveDeleteFolder.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^18.19.123",
+    "typescript": "^5.9.2"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch"
+  }
+}

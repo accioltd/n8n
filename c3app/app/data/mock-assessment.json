@@ -1,0 +1,146 @@
+[
+  {
+    "id": "ID",
+    "name": "Identify",
+    "subcategories": [
+      {
+        "id": "ID.AM-01",
+        "name": "Asset Management",
+        "category": "Identify",
+        "value": 4
+      },
+      {
+        "id": "ID.AM-02",
+        "name": "Software platforms and applications",
+        "category": "Identify",
+        "value": 3
+      },
+      {
+        "id": "ID.GV-01",
+        "name": "Organizational cybersecurity policy",
+        "category": "Identify",
+        "value": 4
+      }
+    ]
+  },
+  {
+    "id": "PR",
+    "name": "Protect",
+    "subcategories": [
+      {
+        "id": "PR.AC-01",
+        "name": "Identity and credential management",
+        "category": "Protect",
+        "value": 4
+      },
+      {
+        "id": "PR.AC-02",
+        "name": "Physical access management",
+        "category": "Protect",
+        "value": 3
+      },
+      {
+        "id": "PR.DS-01",
+        "name": "Data-at-rest protection",
+        "category": "Protect",
+        "value": 5
+      }
+    ]
+  },
+  {
+    "id": "DE",
+    "name": "Detect",
+    "subcategories": [
+      {
+        "id": "DE.AE-01",
+        "name": "Anomalies and events detection",
+        "category": "Detect",
+        "value": 3
+      },
+      {
+        "id": "DE.CM-01",
+        "name": "Security continuous monitoring",
+        "category": "Detect",
+        "value": 2
+      },
+      {
+        "id": "DE.DP-01",
+        "name": "Detection process development",
+        "category": "Detect",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": "RS",
+    "name": "Respond",
+    "subcategories": [
+      {
+        "id": "RS.RP-01",
+        "name": "Response planning",
+        "category": "Respond",
+        "value": 4
+      },
+      {
+        "id": "RS.CO-01",
+        "name": "Response communications",
+        "category": "Respond",
+        "value": 3
+      },
+      {
+        "id": "RS.AN-01",
+        "name": "Response analysis",
+        "category": "Respond",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": "RC",
+    "name": "Recover",
+    "subcategories": [
+      {
+        "id": "RC.RP-01",
+        "name": "Recovery planning",
+        "category": "Recover",
+        "value": 2
+      },
+      {
+        "id": "RC.IM-01",
+        "name": "Recovery improvements",
+        "category": "Recover",
+        "value": 2
+      },
+      {
+        "id": "RC.CO-01",
+        "name": "Recovery communications",
+        "category": "Recover",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": "GV",
+    "name": "Govern",
+    "subcategories": [
+      {
+        "id": "GV.OC-01",
+        "name": "Organizational context",
+        "category": "Govern",
+        "value": 5
+      },
+      {
+        "id": "GV.RM-01",
+        "name": "Risk management strategy",
+        "category": "Govern",
+        "value": 4
+      },
+      {
+        "id": "GV.SC-01",
+        "name": "Supply chain risk management",
+        "category": "Govern",
+        "value": 3
+      }
+    ]
+  }
+]

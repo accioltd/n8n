@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+ul {
+  list-style: circle;
+}
+
+ol {
+  list-style: decimal;
+}
+
+.Spreadsheet__table {
+  width: 100%;
+}
+
+.Spreadsheet__table th:nth-child(1) {
+  width: 50px;
+}
+
+.Spreadsheet__table th:nth-child(2),
+th:nth-child(7) {
+  width: 80px;
+}
+
+.Spreadsheet__table th:nth-child(5),
+th:nth-child(6) {
+  width: 100px;
+}
+
+.Spreadsheet__table th:nth-child(3) {
+  width: 250px;
+}
+
+.Spreadsheet__table th:nth-child(4) {
+  width: auto;
+}
+
+.Spreadsheet__table td:nth-child(2),
+td:nth-child(5),
+td:nth-child(6),
+td:nth-child(7) {
+  text-align: center;
+}
+
+.Spreadsheet__table td:nth-child(4) span {
+  white-space: normal;
+  overflow-wrap: break-word;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  line-clamp: 3;
+  overflow: hidden;
+}
+
+.Spreadsheet__table select {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* TipTap Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+
+  th,
+  td {
+    border: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+    position: relative;
+  }
+
+  th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+
+  .column-resize-handle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 3px;
+    background-color: #666;
+    cursor: col-resize;
+  }
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  margin: 16px 0;
+}
+
+.selectedCell {
+  background-color: rgba(0, 123, 255, 0.2);
+}
+
+.selectedCell:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 123, 255, 0.2); /* Highlight color */
+  pointer-events: none;
+  z-index: 1;
+}
+
+.tiptap {
+  :first-child {
+    margin-top: 0;
+  }
+
+  img {
+    display: block;
+    height: auto;
+    margin: 1.5rem 0;
+    max-width: 100%;
+
+    &.ProseMirror-selectednode {
+      outline: 3px solid var(--purple);
+    }
+  }
+
+  /* Table-specific styling */
+  table {
+    border-collapse: collapse;
+    margin: 0;
+    overflow: hidden;
+    table-layout: fixed;
+    width: 100%;
+
+    td,
+    th {
+      border: 1px solid var(--gray-3);
+      box-sizing: border-box;
+      min-width: 1em;
+      padding: 6px 8px;
+      position: relative;
+      vertical-align: top;
+
+      > * {
+        margin-bottom: 0;
+      }
+    }
+
+    th {
+      background-color: var(--gray-1);
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .selectedCell:after {
+      background: var(--gray-2);
+      content: "";
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      pointer-events: none;
+      position: absolute;
+      z-index: 2;
+    }
+
+    .column-resize-handle {
+      background-color: var(--purple);
+      bottom: -2px;
+      pointer-events: none;
+      position: absolute;
+      right: -2px;
+      top: 0;
+      width: 4px;
+    }
+  }
+
+  .tableWrapper {
+    margin: 1.5rem 0;
+    overflow-x: auto;
+
+    background-color: aqua;
+  }
+
+  &.resize-cursor {
+    cursor: ew-resize;
+    cursor: col-resize;
+  }
+}

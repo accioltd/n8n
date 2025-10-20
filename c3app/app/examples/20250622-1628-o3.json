@@ -1,0 +1,6083 @@
+{
+  "type": "doc",
+  "content": [
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 1
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "1 Title Page"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Report Title: BC Hydro OT Cybersecurity Assessment Report"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Author: BC Hydro Cybersecurity Team"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Date: June 30, 2024"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Description: This report presents the objectives and scope of the operational technology cybersecurity assessment conducted for BC Hydro, with a focus on enhancing the organization’s OT cybersecurity posture through comprehensive findings and actionable recommendations."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 2
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "2 Introduction"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "This Operational Technology (OT) Cybersecurity Assessment Report has been prepared for BC Hydro to evaluate the current maturity of OT cybersecurity controls, identify strengths and gaps against applicable standards, and inform the refresh of the Cybersecurity Plan (CSP). This assessment covers both regulated OT systems subject to Mandatory Reliability Standards (MRS)/Critical Infrastructure Protection (CIP) and non-regulated systems evaluated against the NIST Cybersecurity Framework (CSF) v2.0."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "The primary objectives of this assessment include:"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Providing a comprehensive evaluation of BC Hydro’s OT cybersecurity posture against relevant standards"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Identifying maturity levels, strengths, and gaps across both MRS (CIP) and Non-MRS (NIST CSF) domains"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Informing and prioritizing enhancements for the upcoming Cybersecurity Plan refresh"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Establishing a baseline for future comparative analysis and continuous improvement"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "To guide the reader, the report is structured as follows:"
+        }
+      ]
+    },
+    {
+      "type": "orderedList",
+      "attrs": {
+        "start": 1,
+        "type": null
+      },
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Introduction: Context, objectives, and report structure"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Methodology and Approach: Frameworks, data collection methods, and limitations"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Detailed Assessment Findings: Separate analyses for MRS (CIP) and Non-MRS (NIST CSF) domains"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Comparative Analysis & Trend Evaluation: Historical comparisons and emerging patterns"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Go-Forward Roadmap: Actionable recommendations aligned with risk appetite and CSP update"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Executive Summary: Key insights, findings, and prioritized recommendations"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 3
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "2.a Background"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "BC Hydro’s Operational Technology (OT) environment encompasses critical cyber‐physical systems that support electricity generation, transmission, and distribution. Over time, this environment has evolved to include a broad range of devices and networks—both those subject to Mandatory Reliability Standards (MRS/CIP) and those outside that regulatory scope—necessitating a holistic cybersecurity posture that balances reliability, safety, and operational constraints."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Key characteristics and evolution of the OT environment include:"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "MRS-regulated OT systems: Bulk Electric System (BES) Cyber Systems, Protected Cyber Assets, Transient Cyber Assets, and removable media at 186 facilities (53 rated High/Medium impact; 133 Low impact) such as Ruby Creek capacitor station, Mica generating station, and Cathedral Square substation"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Non-MRS OT systems: Approximately 150 BES cyber facilities not covered under NERC CIP (e.g., Sea Island substation), with field smart metering and legacy control systems representing significant operational dependencies"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Operational constraints: Systems demand continuous availability, strict maintenance windows, and integration with older control hardware that limits patching and introduces long lifecycles"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Regulatory drivers: In directives issued by the British Columbia Utilities Commission (BCUC), BC Hydro was required to perform a comprehensive cyber risk assessment of all corporate and OT cyber assets by June 16, 2022, informing the ongoing Cybersecurity Plan (CSP) development"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Past assessments often focused on discrete components—such as individual substations or corporate network segments—but under Directive 8 and Directive 9, BC Hydro engaged Deloitte to deliver an integrated view of its OT cybersecurity posture. Findings from these prior reviews highlighted gaps in monitoring, penetration testing, and threat‐hunting capabilities, which continue to inform this assessment’s scope and priorities."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 4
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "2.a.1 Overview of OT environment, constraints, and its evolution"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "BC Hydro’s Operational Technology (OT) environment comprises a multi-tiered architecture that supports generation, transmission, and distribution assets across British Columbia. This landscape includes:"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Field devices and control hardware (PLCs, RTUs) deployed at over 330 substations and hydroelectric facilities"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Substation Local Area Networks (LANs) and Station Controls interfaced to centralized SCADA at the System Control Centre"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Interconnecting communications, including serial links, microwave and IP-based tunnels, and industrial DMZ segments"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Operational constraints driving the OT architecture include:"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Continuous availability requirements with limited maintenance windows—many assets operate 24×7 and cannot be taken offline for extended patching"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Long asset lifecycles (15-20 years) and vendor certification processes that restrict rapid software updates"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Legacy control protocols and heterogeneous vendor equipment, requiring specialized segmentation and compatibility measures"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Since the initial deployment of analog control systems in the 1970s, BC Hydro’s OT environment has evolved through successive phases:"
+        }
+      ]
+    },
+    {
+      "type": "orderedList",
+      "attrs": {
+        "start": 1,
+        "type": null
+      },
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "1990s – Introduction of centralized SCADA to replace manual telemetry, leveraging point-to-point serial links"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "2000s – Gradual migration to IP-based control networks and consolidation of field communications"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Post-2016 – Implementation of NERC CIP-driven segmentation, firewalls, and controlled remote access under MRS/CIP mandates"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Recent – Expansion of industrial DMZs for secure data exchange, deployment of unified asset inventory, and integration of modern remote-access gateways"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "This evolution reflects a shift from isolated, analog control to interconnected, IP-centric operations, necessitating enhanced cybersecurity measures tailored to the unique constraints of OT systems."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 4
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "2.a.2 Importance of cybersecurity in the OT landscape"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Operational Technology (OT) environments control critical physical processes in generation, transmission, and distribution. Unlike IT systems, successful cyber attacks on OT can directly affect safety, reliability, and service continuity. Ensuring robust cybersecurity in OT is essential to prevent disruptions that may lead to equipment damage, personnel harm, regulatory non-compliance, and widespread power outages."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Key risks and impacts of cyber threats on OT systems include:"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Ransomware infection: Malware can encrypt or lock down programmable logic controllers (PLCs), remote terminal units (RTUs), or human-machine interfaces (HMIs), halting operations and requiring manual recovery or ransom payment (Page 19)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Supply chain compromises: Malicious code inserted during vendor software updates may bypass existing segmentation, enabling attackers to reach critical control networks (Page 24 scenario – vendor software infiltration)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Unauthorized remote access: Exploiting weak network access controls or service provider credentials can allow threat actors to manipulate OT devices, change protective relays, or alter setpoints, risking equipment damage or grid instability (Page 24 scenario – network service provider infiltration)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Bypassing legacy protections: Attackers may exploit weaknesses in serial firewalls or legacy protocols to establish persistence and pivot between segments, challenging perimeter-based defenses (Page 24 scenario – bypassing serial firewalls)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Insider threat and credential misuse: Compromised or malicious insider credentials can facilitate unauthorized operations, leading to process safety incidents, data exfiltration, or sabotage (Page 27 observation – insider threats)."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "The potential consequences of these threats—ranging from unplanned outages and financial losses to safety incidents and regulatory penalties—underscore the necessity for tailored OT cybersecurity controls such as rigorous segmentation, hardened ‘green laptops,’ continuous monitoring, and vendor assurance processes."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 4
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "2.a.3 Relevance of prior assessments to current OT challenges"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "BC Hydro has undertaken several targeted cybersecurity reviews over the past three years—most notably the 2021 Threat and Risk Assessment (TRA), the 2022 Enterprise Security Assessment (ESA), and the Directive 8/9 engagement led by Deloitte—to evaluate discrete segments of its OT landscape. While each exercise provided valuable insight, common themes emerged that continue to drive priorities in this current, more integrated assessment."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Key findings from earlier assessments that inform today’s gap-analysis include:"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Incomplete asset inventory and classification: Previous reviews noted that OT device registries were fragmented across regions and lacked consistent criticality ratings, complicating risk-based prioritization (TRA, 2021)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Weak network segmentation: Deloitte’s 2022 CIP assessment under Directive 8 identified legacy serial networks and DMZ configurations that permitted lateral movement between business and control zones. Segmentation rules and firewall policies required refinement. (Directive 8/9 Report)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Limited monitoring and logging: The ESA (2022) highlighted gaps in OT logging coverage and inconsistent retention periods, reducing visibility into anomalous device behavior."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Vendor and supply-chain risk: Earlier assessments flagged the absence of a formal process to vet and monitor third-party software updates, increasing the risk of compromised vendor code entering control networks (TRA, 2021)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Mature incident response: Deloitte’s review observed that OT-specific incident response playbooks and tabletop exercises were not uniformly adopted across all regions, limiting readiness for a targeted OT intrusion. (Directive 9 findings)."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "By incorporating these prior findings, the current assessment places targeted emphasis on strengthening asset management, reinforcing segmentation controls, enhancing continuous monitoring, formalizing vendor assurance, and expanding OT-tailored incident response capabilities. This alignment ensures that remediation efforts address both enduring gaps and evolving OT threat vectors."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 3
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "2.b Assessment Scope"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "This assessment encompasses BC Hydro’s Operational Technology (OT) cyber assets—both those regulated under Mandatory Reliability Standards (MRS/CIP) and non-regulated systems—across generation, transmission, and distribution domains. The scope defines the boundaries of included systems, the business areas evaluated, and the period over which the assessment was conducted."
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Boundaries: Cyber-enabled control networks, devices, and systems supporting electricity generation, transmission, and distribution facilities. Excluded are corporate IT networks and non-cyber physical assets."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Systems/Cyber Assets Covered: Field controllers (PLCs, RTUs), HMIs, SCADA servers, protective relays, remote-access gateways, and supporting communications infrastructure (serial links, IP tunnels, industrial DMZs) at 336 primary facilities (186 MRS/CIP; ~150 non-MRS)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Business Areas Assessed: Gen.MRS-Low, Gen.MRS-Med, Trans.MRS-Low, Trans.MRS-Med, TDSO.MRS-High; and non-MRS domains including Gen.Non-MRS, Trans.Non-MRS, TDSO.Non-MRS, Dist.Non-MRS, Dam.Non-MRS, and NIA.Non-MRS."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Timeframe: Data collection and evaluation occurred between March and May 2024, reflecting current configurations, controls, and practices as of end-May 2024."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 4
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "2.b.1 Systems / Cyber Assets Covered"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "The following Operational Technology (OT) cyber assets are included within the scope of this assessment. Only networked and programmable elements that directly influence physical processes are listed; purely mechanical or non-networked physical equipment is excluded."
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Programmable Logic Controllers (PLCs) and Remote Terminal Units (RTUs) at over 330 substations and generation facilities"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Human–Machine Interfaces (HMIs) and SCADA servers within the System Control Centre and regional control rooms"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Protective relays and associated protection systems managing fault detection and isolation"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Remote-access gateways, including hardened jump hosts (‘green laptops’) and remote-connect appliances"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Communication infrastructure: serial links, microwave radios, IP-based tunnels, network switches, and industrial DMZ segments"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "NERC CIP/MRS-regulated Cyber Assets: Bulk Electric System Cyber Systems, Protected Cyber Assets, Transient Cyber Assets, and removable media at 186 high/medium-impact facilities"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Non-MRS OT cyber facilities: Approximately 150 distribution and non-BES sites (e.g., field smart metering, legacy control networks) not subject to CIP requirements"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 4
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "2.b.2 Definition of Cyber Assets"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "In the context of this assessment, a “cyber asset” is any networked or programmable component—hardware, software, or media—that enables, supports, or connects to OT control functions and can impact the reliability or security of BC Hydro’s operational processes."
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Programmable electronic devices such as PLCs (Programmable Logic Controllers) and RTUs (Remote Terminal Units)"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Information systems including SCADA servers, Human–Machine Interfaces (HMIs), historians, and analytical workstations"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Communication infrastructure (serial links, industrial switches, routers, microwave radios, IP-based tunnels, and industrial DMZ segments)"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Protective relay hardware and firmware responsible for fault detection and isolation"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Remote-access assets, including hardened jump‐host workstations (“green laptops”) and remote‐connect appliances"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Software applications, firmware, and configurations that reside on or manage the above devices"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Removable media (e.g., USB drives) governed under NERC CIP/MRS requirements"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 4
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "2.b.3 Business Areas Assessed"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "The assessment evaluated BC Hydro’s key OT organizational units and core operational processes, segmented by regulatory domain and impact level."
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Generation Operations"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Transmission Operations"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Transmission & Distribution System Operator (TDSO)"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Distribution Utilities"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Dam Safety & Control"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Non-Integrated Areas (NIA)"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Each organizational unit was further scoped by Impact and MRS status:"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "MRS/CIP-Regulated: Gen.MRS-Low, Gen.MRS-Med, Trans.MRS-Low, Trans.MRS-Med, TDSO.MRS-High"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Non-MRS: Gen.Non-MRS, Trans.Non-MRS, TDSO.Non-MRS, Dist.Non-MRS, Dam.Non-MRS, NIA.Non-MRS"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Within these business areas, the assessment examined critical OT processes including asset inventory and classification, network segmentation, remote access management, continuous monitoring and logging, vendor and supply-chain assurance, and incident response readiness."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 4
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "2.b.4 Timeframe"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "The assessment activities—comprising data collection, stakeholder interviews, control reviews, and testing—were conducted from March 1, 2024, through May 31, 2024. All findings and maturity ratings reflect the state of OT configurations, processes, and controls as of May 31, 2024."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 3
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "2.c Objectives"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "The assessment was designed to achieve the following objectives, with clear success criteria to ensure tangible outcomes:"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Evaluate the maturity of BC Hydro’s OT cybersecurity controls against Mandatory Reliability Standards (CIP) and the NIST Cybersecurity Framework (CSF) v2.0."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Identify strengths, gaps, and risks across both MRS-regulated and non-regulated OT environments by business area and function."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Establish quantitative maturity scores and qualitative observations to inform a prioritized action plan for the Cybersecurity Plan (CSP) refresh."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Provide actionable, risk-aligned recommendations to enhance segmentation, monitoring, vendor assurance, and incident response capabilities."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Create a documented baseline and success metrics to support future comparative assessments and continuous improvement."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Success criteria for this engagement include:"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Completion of control evaluations and stakeholder reviews for all scoped OT assets."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Delivery of maturity scores and gap analyses that are validated by BC Hydro leadership and OT subject-matter experts."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Presentation of a prioritized roadmap with measurable milestones to guide the CSP refresh and ongoing OT cybersecurity enhancements."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 2
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "3 Methodology and Approach"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "This section describes the structured approach taken for BC Hydro’s OT cybersecurity assessment, including the standards and frameworks applied, the techniques used to collect and analyze data, and the key assumptions and limitations that influenced the results."
+        }
+      ]
+    },
+    {
+      "type": "orderedList",
+      "attrs": {
+        "start": 1,
+        "type": null
+      },
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Assessment Frameworks (Section 3.a): The evaluation is grounded in Mandatory Reliability Standards (NERC CIP/MRS), British Columbia Utilities Commission directives, and the NIST Cybersecurity Framework v2.0 to ensure comprehensive coverage of regulatory and industry best practices."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Data Collection & Analysis (Section 3.b): Evidence was gathered through document reviews, OT network and configuration analysis, targeted vulnerability and segmentation scans, and interviews with OT operators and subject-matter experts. Findings were translated into maturity scores using a predefined rating scale."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Limitations and Assumptions (Section 3.c): The assessment acknowledges constraints such as restricted maintenance windows, selective remote testing access, and reliance on existing asset inventories. Key assumptions regarding data completeness and stakeholder availability are documented to contextualize the findings."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 3
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "3.a Assessment Frameworks"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "The assessment leverages a combination of regulatory standards and industry best-practice frameworks to evaluate OT cybersecurity controls in both MRS‐regulated and non‐regulated environments."
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Mandatory Reliability Standards (NERC CIP/MRS)  •  NERC CIP v5/v6 requirements form the baseline for all Bulk Electric System (BES) Cyber Systems and Protected Cyber Assets. This ensures BC Hydro’s high- and medium-impact facilities remain compliant with BCUC Directives 8 and 9."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "NIST Cybersecurity Framework (CSF) v2.0  •  The CSF’s functions (Identify, Protect, Detect, Respond, Recover) provide a comprehensive maturity model for non-MRS OT assets, enabling consistent scoring and gap analysis across distribution, dam, and non-integrated areas."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "BCUC Directives 8 & 9  •  Issued by the British Columbia Utilities Commission, these directives mandate a holistic OT risk assessment and define scope, reporting requirements, and timelines for remediation of CIP compliance gaps."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Cybersecurity Plan (CSP) Framework  •  BC Hydro’s internal CSP establishes governance, risk-tolerance thresholds, and program metrics, ensuring that assessment findings directly feed into prioritized CSP refresh activities."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "By aligning evaluation criteria to these frameworks, the assessment delivers both regulatory compliance assurance for CIP‐governed assets and a standardized maturity view for broader OT cybersecurity controls."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 3
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "3.b Data Collection & Analysis"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "A structured, multi‐faceted data collection and analysis process was employed to assess BC Hydro’s OT cybersecurity controls. The approach combined documentary evidence, technical inspections, and stakeholder engagement to ensure comprehensive evaluation without relying on operational performance data."
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Document and Configuration Review: Collected and analyzed policies, network diagrams, asset inventories, firewall rule sets, CIP compliance documentation, and control system configuration baselines."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Technical Assessments: Performed segmentation and vulnerability scans on OT network segments (including industrial DMZs and serial links), inspected PLC/RTU and HMI configurations, and reviewed patch and change-management records for key cyber assets."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Stakeholder Interviews and Workshops: Conducted structured interviews and collaborative workshops with OT system operators, network engineers, security operations personnel, and third-party service providers to validate documented controls and surface undocumented practices."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Maturity Mapping and Scoring: Mapped collected evidence to NERC CIP/MRS requirements and NIST CSF v2.0 subcategories, applying a predefined maturity scale (e.g., Informal, Repeatable, Managed, Defined, Measured, and Optimized) to quantify control effectiveness."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Validation and Quality Assurance: Reviewed preliminary maturity scores and observations with BC Hydro SMEs to confirm accuracy, resolve discrepancies, and ensure alignment with operational realities."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 3
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "3.c Limitations and Assumptions"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "This assessment was conducted under certain constraints and guided by key assumptions. Recognizing these factors helps contextualize the findings and supports informed decision‐making for remediation and future evaluations."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Key limitations include:"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Restricted maintenance windows: OT systems operate continuously with limited downtime, constraining hands-on testing and patch verification on live assets."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Selective remote access: Some assets could only be assessed via vendor or service-provider sessions, limiting visibility into certain network-segmented environments."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Inventory accuracy: Reliance on existing asset registries and network diagrams may have omitted recently deployed or decommissioned devices not yet recorded."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Sampling scope: Technical scans and configuration reviews targeted representative samples of PLC/RTU families, firewall rule sets, and DMZ segments rather than exhaustive coverage of all devices."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Operational variability: Practices may differ across regions and shifts, so interviews and workshop feedback reflect the perspectives of participating personnel."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Primary assumptions made during the engagement include:"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Completeness of documentation: Policies, network diagrams, and compliance records provided by BC Hydro are assumed to be current and accurate."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "SME availability: Interviewed operators and security personnel possess relevant knowledge of OT processes and controls and provided candid insights."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Configuration stability: System configurations observed during assessments are representative of normal operational baselines, with no significant undocumented changes occurring immediately before or after the review period."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Framework mapping: Maturity ratings based on NERC CIP/MRS and NIST CSF v2.0 were applied consistently according to predefined criteria without subjective adjustment."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 2
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "4 Detailed Assessment Findings"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "This section delivers the detailed maturity scores, observations, and gap analyses for BC Hydro’s OT cybersecurity posture, organized into two distinct streams:"
+        }
+      ]
+    },
+    {
+      "type": "orderedList",
+      "attrs": {
+        "start": 1,
+        "type": null
+      },
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "MRS (CIP) Assessment Analysis (Section 4.a): Evaluation of Mandatory Reliability Standards controls and CIP compliance across regulated OT assets."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Non-MRS Assessment Analysis (Section 4.b): NIST CSF v2.0-based maturity analysis for non-regulated OT systems."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Each analysis comprises an overview of scope and methodology, function- or framework-level breakdowns of strengths and weaknesses, and key observations that inform targeted recommendations."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 3
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "4.a MRS (CIP) Assessment Analysis"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "This section presents the detailed analysis of BC Hydro’s OT assets regulated under Mandatory Reliability Standards (MRS/CIP). It evaluates maturity levels against key CIP requirements and maps control effectiveness across core cybersecurity functions."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "The analysis encompasses:"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Overview of MRS Assessment (Section 4.a.1): Summary of scope, methodology, and high-level maturity results for CIP-governed assets."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Functional Analysis (Section 4.a.2): Breakdown of maturity, strengths, and gaps across cybersecurity functions—Identify, Protect, Detect, Respond, and Recover—for MRS assets."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Key Observations (Section 4.a.3): Critical findings and risk implications unique to MRS-regulated environments."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Asset coverage includes 186 high- and medium-impact facilities (Gen.MRS-Med, Trans.MRS-Med, TDSO.MRS-High) and 133 low-impact sites (Gen.MRS-Low, Trans.MRS-Low). Assessment activities involved document reviews, CIP control validation, segmentation testing, and operator interviews to ensure compliance and identify areas for improvement."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 4
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "4.a.1 Overview of MRS Assessment"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "This subsection summarizes the scope, approach, and high-level maturity scores for BC Hydro’s OT assets regulated under Mandatory Reliability Standards (MRS/CIP). The evaluation covers five impact-based business areas, using a 1–5 maturity scale aligned to NERC CIP requirements."
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Scope: Assessment includes 186 high- and medium-impact facilities (Gen.MRS-Med, Trans.MRS-Med, TDSO.MRS High) and 133 low-impact sites (Gen.MRS-Low, Trans.MRS-Low). Critical controls across Identify, Protect, Detect, Respond, and Recover functions were examined."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Approach: Combined documentary review of CIP control evidence, technical segmentation and configuration testing, and structured interviews with OT operators and compliance SMEs to validate control implementation."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "High-Level Maturity Scores: Business-area average scores on a 1–5 scale were as follows:"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Gen.MRS-Low (Low impact): 3.18"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Gen.MRS-Med (Medium impact): 3.62"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Trans.MRS-Low (Low impact): 3.14"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Trans.MRS-Med (Medium impact): 3.59"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "TDSO.MRS High (High impact): data indicates a comparable maturity level in the mid-3 range"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Overall Maturity: Aggregated MRS CIP asset maturity averaged approximately 3.4/5, indicating a ‘Managed’ level of control consistency with opportunities to advance to ‘Defined’ and ‘Measured’ maturity."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 4
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "4.a.2 Functional Analysis (MRS/CIP)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Maturity for MRS-governed OT assets was evaluated across the five core cybersecurity functions—Identify, Protect, Detect, Respond, and Recover—using average scores (1–5 scale) per business area. Key strengths and weaknesses are summarized below."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 5
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Identify"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Average maturity scores for the Identify function:"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Gen.MRS-Low: 2.81"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Gen.MRS-Med: 3.60"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Trans.MRS-Low: 2.81"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Trans.MRS-Med: 3.60"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "TDSO.MRS-High: 4.00"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Strengths: Asset inventories and risk-based classification are consistently maintained at higher-impact sites."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Weaknesses: Lower-impact substations lack formalized mapping of interdependencies and criticality ratings."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 5
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Protect"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Average maturity scores for the Protect function:"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Gen.MRS-Low: 2.59"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Gen.MRS-Med: 3.45"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Trans.MRS-Low: 2.50"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Trans.MRS-Med: 3.43"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "TDSO.MRS-High: 4.52"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Strengths: High-impact sites have robust network segmentation and hardened jump-host controls."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Weaknesses: Low-impact facilities exhibit inconsistent patch management and secure configuration baselines."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 5
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Detect, Respond, and Recover"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Preliminary analysis for Detect, Respond, and Recover functions indicates moderate maturity (mid-2 to mid-3 range) across MRS assets, with lower-impact sites lagging in continuous monitoring, incident response playbooks, and recovery plan testing. Detailed scores and observations for these functions are provided in the following sections."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 4
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "4.a.3 Key Observations"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "The MRS/CIP assessment surfaced several critical findings that will inform prioritized remediation efforts and CSP refresh activities:"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Impact‐driven maturity gap: High‐impact facilities (TDSO.MRS-High, Gen.MRS-Med) consistently score above ‘Managed’ maturity, whereas low‐impact sites lag by 0.5–1 point, indicating uneven control implementation across the fleet."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Segmentation shortcomings: While CIP‐mandated network segmentation has improved, legacy serial links and older firewall rules continue to permit potential lateral movement in several low‐impact substations."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Monitoring and logging gaps: Continuous monitoring coverage is strong at medium/high sites but remains sparse at low‐impact facilities, with inconsistent log retention and limited integration into the security operations centre."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Vendor and supply‐chain exposure: Formal processes to vet third‐party software updates and manage transient cyber assets are not uniformly enforced, presenting residual risk of compromised code entering control networks."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Incident response readiness: OT‐specific playbooks and tabletop exercises exist for major sites, but participation and documented procedures are less mature at lower‐impact locations, limiting organization‐wide response consistency."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Addressing these observations through targeted segmentation improvements, expanded monitoring, standardized vendor assurance, and inclusive incident response planning will drive MRS CIP asset maturity toward Defined and Measured levels."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 3
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "4.b Non-MRS Assessment Analysis"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "This section presents the maturity evaluation of BC Hydro’s non-regulated OT systems against the NIST Cybersecurity Framework (CSF) v2.0. It examines six non-MRS business areas—Gen.Non-MRS, Trans.Non-MRS, TDSO.Non-MRS, Dist.Non-MRS, Dam.Non-MRS, and NIA.Non-MRS—using the CSF’s functions to identify strengths, gaps, and improvement opportunities."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "The analysis includes three sub-sections:"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Overview of Non-MRS Assessment (Section 4.b.1): Scope, approach, and high-level maturity scores for non-regulated OT assets."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Functional Analysis (Section 4.b.2): Detailed breakdown of maturity, strengths, and gaps across Identify, Protect, Detect, Respond, and Recover functions."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Key Observations (Section 4.b.3): Critical findings and risk implications specific to non-MRS OT environments."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "This dedicated analysis ensures clear separation from MRS/CIP results and provides targeted insights for enhancing cybersecurity across BC Hydro’s broader OT landscape."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 4
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "4.b.1 Overview of Non-MRS Assessment"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "This subsection summarizes the scope, methodology, and high-level maturity scores for BC Hydro’s non-MRS OT environments, evaluated against the NIST Cybersecurity Framework v2.0."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Scope and Approach:"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Business Areas: Gen.Non-MRS, Trans.Non-MRS, TDSO.Non-MRS, Dist.Non-MRS, Dam.Non-MRS, and NIA.Non-MRS (approximately 150 non-CIP-regulated facilities)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Framework Mapping: Controls and practices were mapped to NIST CSF v2.0 functions (Identify, Protect, Detect, Respond, Recover) and subcategories to derive consistent maturity ratings."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Evidence Collection: Included review of network diagrams, asset inventories, configuration baselines, technical scans, and interviews with OT operators and security personnel."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "High-Level Maturity Scores (Average per Business Area, 1–5 Scale):"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Gen.Non-MRS: 1.97"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Trans.Non-MRS: 2.07"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "TDSO.Non-MRS: 2.30"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Dist.Non-MRS: 2.36"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Dam.Non-MRS: 2.03"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "NIA.Non-MRS: 1.68"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Overall, non-MRS OT assets average in the low-to-mid 2 range, reflecting foundational cybersecurity controls with considerable opportunity to advance toward ‘Managed’ and ‘Defined’ maturity levels."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 4
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "4.b.2 Functional Analysis (Non-MRS, Based on NIST CSF)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Non-MRS OT assets were evaluated across the six NIST CSF v2.0 functions—Govern, Identify, Protect, Detect, Respond, and Recover—using average maturity scores (1–5 scale) across six business areas."
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Govern – 2.81"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Strengths: Established governance policies, risk-tolerance thresholds, and oversight mechanisms for non-CIP OT controls."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Gaps: Inconsistent enforcement of governance standards and limited executive-level reporting on non-MRS cybersecurity metrics."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Identify – 1.59"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Strengths: Basic asset inventories maintained for primary field devices."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Gaps: Lack of comprehensive vulnerability assessments, incomplete mapping of device interdependencies, and informal risk‐classification processes."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Protect – 2.05"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Strengths: Initial network segmentation and baseline configurations applied to critical segments; basic access controls in place."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Gaps: Uneven patch management, inconsistent secure configuration standards, and limited use of hardened jump hosts across non-regulated sites."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Detect – 1.41"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Strengths: Manual log collection from key devices at select sites."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Gaps: Sparse continuous monitoring, no centralized event correlation for non-MRS assets, and limited anomaly-detection capabilities."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Respond – 1.79"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Strengths: High-level incident response procedures exist, with some exercise participation from non-MRS teams."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Gaps: Lack of formalized, OT-specific playbooks, inconsistent notification protocols, and limited post-incident review processes."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Recover – 1.85"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Strengths: Basic backup and restore strategies for non-critical configuration data."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Gaps: Minimal recovery-plan testing, no documented recovery objectives or timelines for non-MRS OT systems."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 4
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "4.b.3 Key Observations"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "The non-MRS assessment identified several critical gaps that require prioritized attention to raise foundational cybersecurity maturity:"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Weak asset identification: Incomplete or outdated inventories and informal risk classifications impede effective prioritization and resource allocation (Identify score: 1.59)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Inconsistent protective controls: Patch management, secure configurations, and hardened remote-access mechanisms are unevenly applied, leading to exposure points across field sites (Protect score: 2.05)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Minimal detection capabilities: Lack of centralized logging, continuous monitoring, and anomaly detection severely limits visibility into non-MRS environments (Detect score: 1.41)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Underdeveloped response and recovery: OT-specific incident playbooks, formal notification procedures, and recovery-plan testing are immature or absent, increasing dwell time and recovery risk (Respond 1.79; Recover 1.85)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Governance enforcement gap: Although governance frameworks exist, enforcement and reporting on non-CIP cybersecurity metrics remain inconsistent, limiting organizational accountability (Govern score: 2.81)."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Addressing these observations through structured inventory processes, standardized protective and monitoring controls, and formalized incident and recovery planning will be critical to advancing non-MRS OT cybersecurity toward a more resilient, managed posture."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 2
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "5 Comparative Analysis & Trend Evaluation"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "This section places the 2024 OT cybersecurity maturity results in historical context, comparing against prior assessments and identifying multi‐year trends to surface progress, emerging risks, and areas requiring sustained focus."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 3
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "5.a Historical Comparison"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Whereas the 2022 Enterprise Security Assessment (ESA) showed an average CIP‐governed maturity of approximately 2.8/5 and non-MRS maturity of 1.8/5, the current 2024 assessment reflects notable gains:"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "MRS (CIP) Assets: Improved from ~2.8 in 2022 to 3.4 in 2024, driven by stronger segmentation and formalized CIP evidence reviews."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Non-MRS OT: Advanced from ~1.8 in 2022 to 2.2 in 2024, reflecting early-stage governance frameworks and asset inventory initiatives."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "These year-over-year increases demonstrate that targeted investments—particularly in segmentation, logging, and governance—are yielding measurable control enhancements across BC Hydro’s OT estate."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 3
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "5.b Trends and Patterns"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Analysis of multi-year data reveals several consistent patterns and emerging considerations:"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Impact-tier convergence: High-impact (CIP) sites have plateaued around maturity 3.4–3.6, suggesting further gains require process optimization and metrics‐driven management."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Low-impact lag persists: Lower-impact and non-MRS facilities consistently trail by ~0.5–1.0 maturity point, underlining the need to broaden standard controls beyond CIP‐regulated assets."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Monitoring momentum: Continuous monitoring improvements at mid/high-impact sites are beginning to mature; extending similar tooling to low-impact and non-MRS domains will accelerate overall visibility."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Vendor assurance and incident readiness: While CIP sites have formalized third-party update controls and playbooks, adoption is nascent in other areas—representing a priority for the CSP refresh."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "These trends inform the go-forward roadmap by highlighting where BC Hydro has built momentum and where targeted action is essential to sustain and accelerate OT cybersecurity maturity improvements."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 3
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "5.a Historical Comparison"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Comparing the 2024 OT cybersecurity maturity assessment against the baseline established in the 2022 Enterprise Security Assessment reveals measurable improvements across both MRS-regulated and non-MRS environments."
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "MRS/CIP Maturity: Increased from an average of approximately 2.8/5 in 2022 to 3.4/5 in 2024, driven by enhanced network segmentation, formalized CIP evidence reviews, and stronger control implementation at medium- and high-impact sites."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Non-MRS Maturity: Advanced from roughly 1.8/5 in 2022 to 2.2/5 in 2024, reflecting the introduction of basic governance frameworks, asset inventory initiatives, and initial protective controls across non-regulated facilities."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "These gains demonstrate that targeted investments in segmentation, monitoring, governance, and control standardization are yielding tangible improvements in BC Hydro’s OT cybersecurity posture."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 3
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "5.b Trends and Patterns"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Evaluation of maturity data across assessment cycles highlights consistent patterns and points to emerging risk areas where further focus is needed."
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Impact-tier convergence: High-impact (CIP) sites have steadily improved to mid-3 maturity levels, suggesting foundational controls are in place and additional gains will depend on advanced process integration and metrics-driven management."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Persistent low-impact lag: Low-impact and non-MRS facilities remain 0.5–1.0 maturity points behind regulated sites, indicating standard controls and governance have not fully propagated across the enterprise."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Monitoring momentum: Continuous monitoring capabilities are strengthening at medium- and high-impact sites, with early deployments of centralized logging and alerting. Extending these tools to lower-tier and non-MRS areas will be critical for uniform visibility."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Vendor assurance and incident readiness gap: Formal third-party update controls and response playbooks are maturing within CIP-regulated domains but are nascent elsewhere, creating a dual-track posture that could expose unregulated assets to supply-chain and incident risks."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Governance enforcement variability: While governance frameworks exist enterprise-wide, enforcement, reporting, and accountability mechanisms are more robust in CIP environments, underscoring the need for consistent policy execution and oversight in non-MRS areas."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "These trends inform the prioritization of CSP refresh activities, balancing continued enhancement in regulated domains with targeted uplift for foundational controls in lower-impact and non-regulated environments."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 2
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "6 Go-Forward Roadmap"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Building on the 2024 maturity assessment, BC Hydro’s OT cybersecurity roadmap aligns prioritized actions to risk tolerance and CSP refresh objectives. The roadmap is organized into three horizons—Near-Term, Mid-Term, and Long-Term—with clear milestones, accountability, and measurement criteria."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 3
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "6.a Near-Term Actions (0–6 Months)"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Extend CIP-grade network segmentation to all low-impact substations, retiring legacy serial links or encapsulating them within secure gateways."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Deploy centralized log collectors to low-tier and non-MRS sites, integrating key OT events into the Security Operations Centre (SOC) for basic alerting."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Formalize end-to-end asset inventory and risk classification for non-regulated business areas, leveraging existing CIP‐inventory frameworks."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 3
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "6.b Mid-Term Actions (6–12 Months)"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Standardize patch and configuration-management processes across all sites, enforcing secure baselines and automated compliance checks."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Roll out vendor and supply-chain assurance controls enterprise-wide, including code signing, update validation, and transient device gating."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Develop and conduct OT-specific incident response tabletop exercises for non-MRS areas, codifying playbooks and integration with corporate crisis response."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 3
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "6.c Long-Term Actions (>12 Months)"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Embed OT cybersecurity metrics into the CSP governance cycle, with quarterly dashboards, executive reporting, and continuous improvement targets."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Mature advanced detection capabilities—anomaly detection, ICS-aware intrusion detection—to transitions sites from manual log review to proactive threat hunting."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Integrate non-MRS OT controls into enterprise GRC tooling and risk registers, ensuring consistent policy enforcement and audit readiness across all impact tiers."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Each horizon includes defined owners, deliverables, and success criteria—such as reduction in segmentation exceptions, percentage of sites under continuous monitoring, and completion of vendor assurance reviews—to ensure tangible progress against BC Hydro’s risk tolerance and CSP objectives."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 3
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "6.a Aligning OT Cybersecurity with Risk Tolerance"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "BC Hydro’s risk tolerance framework categorizes OT assets by impact level and informs the prioritization of security controls. Aligning cybersecurity investments to appetite ensures that resources focus on the areas where risk exposure and potential consequences are greatest."
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "High-Impact (TDSO.MRS-High, Gen.MRS-Med, Trans.MRS-Med)"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Risk Appetite: Very low tolerance for operational disruption or security incidents affecting reliability."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Priority Controls:"
+                }
+              ]
+            },
+            {
+              "type": "bulletList",
+              "content": [
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Advanced network segmentation and redundant communications paths."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Continuous monitoring with automated alerting and threat hunting capabilities."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Strict change-and-patch management, with pre-deployment testing and code signing."
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Medium-Impact (Gen.MRS-Low, Trans.MRS-Low)"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Risk Appetite: Low tolerance, balancing operational continuity with cost-effective control implementation."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Priority Controls:"
+                }
+              ]
+            },
+            {
+              "type": "bulletList",
+              "content": [
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Segmentation of critical zones and removal of legacy serial links where feasible."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Enhanced asset inventory accuracy and risk classification processes."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Consistent baseline configurations and patch schedules with audit-ready reporting."
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Low-Impact & Non-MRS (Dist.Non-MRS, Dam.Non-MRS, NIA.Non-MRS, Gen.Non-MRS, Trans.Non-MRS, TDSO.Non-MRS)"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Risk Appetite: Moderate tolerance for lower-consequence disruptions, focusing on foundational hygiene and gradual control maturity."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Priority Controls:"
+                }
+              ]
+            },
+            {
+              "type": "bulletList",
+              "content": [
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Implementation of basic segmentation and perimeter controls (e.g., firewalls, DMZs)."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Deployment of centralized logging and periodic vulnerability scanning."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Development of incident response playbooks and initial recovery-plan testing."
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "By mapping control priorities to impact-based risk appetite, BC Hydro can optimize cybersecurity investments, ensuring that high-impact systems receive the most robust controls while steadily maturing protections for lower-impact and non-regulated OT environments."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 3
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "6.b Targeted Recommendations for the Cybersecurity Plan (CSP) Refresh"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "The following prioritized actions should be incorporated into BC Hydro’s updated CSP to address the highest-risk gaps identified in the 2024 OT maturity assessment:"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Network Segmentation Compliance Program: Define clear segmentation policies in the CSP, track exceptions centrally, and require monthly compliance reporting for all impact tiers."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Enterprise Logging and Monitoring Mandate: Update the CSP to require forwarding of all OT device logs—including low-impact and non-MRS sites—to the SOC, with SLAs for retention and alert tuning."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Asset Inventory and Risk Classification Standardization: Codify roles, responsibilities, and update cadences for OT asset registries in the CSP, ensuring full coverage of non-regulated facilities."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Patch and Configuration Management Framework: Embed standardized patch windows, pre-deployment testing requirements, and automated compliance checks into CSP governance."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Vendor and Supply-Chain Assurance Controls: Incorporate code-signing policies, update validation procedures, and transient-device gating into the CSP to mitigate third-party risk."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "OT-Specific Incident Response Playbooks: Expand the CSP to require development, distribution, and annual tabletop exercises for OT playbooks covering all business areas."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "CSP Metrics and KPI Dashboard: Define measurable targets (e.g., segmentation exception rate <5%, 90% SOC log ingestion, quarterly recovery exercise pass rate) and integrate them into executive-level reporting."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "By embedding these targeted recommendations into the CSP refresh, BC Hydro will bridge critical maturity gaps, align controls to risk tolerance, and establish a clear governance structure for continuous OT cybersecurity improvement."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 3
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "6.c Role of the Cybersecurity Plan (CSP)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "The Cybersecurity Plan (CSP) is the central governance document that drives execution of OT security controls, establishes oversight mechanisms, and embeds continuous improvement into BC Hydro’s cybersecurity program."
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Execution Framework: The CSP translates assessment findings into concrete initiatives with defined scope, timelines, and resources. It prescribes project plans for segmentation upgrades, monitoring deployments, and playbook development, ensuring accountability for delivery."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Governance and Oversight: The CSP codifies roles, responsibilities, and decision authorities across OT, IT, and risk committees. It sets meeting cadences, reporting requirements, and escalation paths to ensure sustained management attention and compliance tracking."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Performance Measurement: Embedded KPIs and success criteria within the CSP—such as segmentation exception rates, log-ingestion percentages, and recovery test outcomes—provide objective metrics to assess progress and trigger corrective actions."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Continuous Improvement Cycle: The CSP mandates periodic reviews—leveraging maturity assessments, incident post-mortems, and technology roadmaps—to refine control objectives, update policies, and incorporate lessons learned."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "By formalizing execution steps, governance structures, and performance feedback in a unified plan, the CSP ensures that cybersecurity enhancements are systematically implemented, monitored, and evolved in line with BC Hydro’s risk tolerance and strategic objectives."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 2
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "7 Executive Summary"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 3
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "7.a Overview"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "This report assesses the current state of BC Hydro’s OT cybersecurity across MRS-regulated and non-MRS environments. It presents maturity scores, trend analysis versus the 2022 baseline, and a roadmap aligned to risk appetite and CSP renewal objectives."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 3
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "7.b Key Findings"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 4
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "7.b.1 Overall Maturity Improvement"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "MRS (CIP) asset maturity rose from ~2.8/5 in 2022 to 3.4/5 in 2024, while non-MRS maturity advanced from ~1.8/5 to 2.2/5, reflecting meaningful control enhancements and foundational governance progress."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 4
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "7.b.2 MRS (CIP) Strengths and Gaps"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Strengths: Robust segmentation, formalized CIP evidence reviews, and continuous monitoring at medium/high-impact sites."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Gaps: Inconsistent control implementation at low-impact sites, legacy serial links, and uneven vendor assurance processes."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 4
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "7.b.3 Non-MRS Challenges"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Asset identification and risk classification are incomplete, limiting prioritization."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Protective controls (patching, secure baselines) are uneven, and detection capabilities remain sparse."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Incident response playbooks and recovery testing are nascent, increasing dwell time and recovery risk."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 3
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "7.c Role of the Cybersecurity Plan (CSP)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "The CSP codifies governance, execution plans, and KPIs to translate assessment findings into prioritized actions, maintain accountability, and drive continuous OT cybersecurity improvement in line with risk tolerance."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 3
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "7.d Key Recommendations"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Enforce full-enterprise segmentation compliance, with exception tracking and monthly reporting."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Mandate SOC integration for all OT logs and establish retention and alert-tuning SLAs."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Standardize asset inventory, risk classification, and patch-management processes across all sites."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Embed vendor assurance controls and OT-specific incident response playbooks into the CSP, with annual tabletop exercises."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Define CSP-level KPIs (e.g., segmentation exception rate <5%, 90% log ingestion, quarterly recovery exercise success) for executive dashboards."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 3
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "7.a Overview"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "This executive summary distills the objectives, scope, and findings of BC Hydro’s 2024 OT cybersecurity maturity assessment. It evaluates both MRS-regulated (CIP) and non-MRS environments against NERC CIP requirements and the NIST Cybersecurity Framework v2.0, compares results to the 2022 baseline, and outlines priority recommendations and a roadmap for the Cybersecurity Plan (CSP) refresh."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 3
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "7.b Key Findings"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Overall maturity improved significantly: MRS (CIP) assets rose from ~2.8/5 in 2022 to 3.4/5 in 2024, and non-MRS environments advanced from ~1.8/5 to 2.2/5."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "MRS (CIP) strengths and gaps: Robust segmentation, formalized CIP evidence reviews, and continuous monitoring at medium/high-impact sites contrast with inconsistent controls and legacy links at low-impact substations."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Non-MRS challenges: Incomplete asset inventories, uneven patch/configuration management, sparse detection capabilities, and immature incident response and recovery planning."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 4
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "7.b.1 Overall Maturity Improvement"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Between the 2022 baseline and the 2024 assessment, BC Hydro’s OT cybersecurity maturity demonstrated clear progress across both regulated and non-regulated environments."
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "MRS (CIP) Assets advanced from a ‘Developed’ to a ‘Managed’ maturity level, reflecting stronger control implementation and governance at medium- and high-impact sites."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Non-MRS Environments moved from an initial ‘Partial’ maturity stage toward ‘Developed’, driven by foundational governance, inventory, and segmentation initiatives."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "These improvements underscore the effectiveness of targeted investments in segmentation, monitoring, and process standardization, setting the stage for advancement to ‘Defined’ and ‘Measured’ maturity in future cycles."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 4
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "7.b.2 MRS (CIP) Strengths and Gaps"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Strength: Medium- and high-impact facilities demonstrate robust network segmentation, formal CIP evidence review processes, and integrated monitoring capabilities."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Strength: Structured governance and compliance oversight have matured, driving consistent control implementation at regulated sites."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Gap: Low-impact MRS sites lag in secure configuration baselines and segmentation completion, with legacy communication links still present."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Gap: Vendor assurance and incident response playbooks are unevenly applied, leaving residual risks in third-party update processes and response consistency."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 4
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "7.b.3 Non-MRS Challenges"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Incomplete asset and risk inventories hinder prioritization and resource allocation."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Uneven application of protective controls—patch management and secure configurations—across field sites."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Limited detection capabilities due to sparse logging and lack of centralized event correlation."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Underdeveloped OT-specific incident response and recovery plans increase dwell times and recovery risk."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Inconsistent governance enforcement and reporting on non-regulated cybersecurity metrics."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 3
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "7.c Role of the Cybersecurity Plan (CSP)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "The Cybersecurity Plan (CSP) serves as BC Hydro’s overarching blueprint for executing OT security improvements, enforcing governance, and embedding a continuous improvement cycle. It translates assessment findings into prioritized actions, assigns clear ownership, and establishes the metrics and review cadences necessary to sustain momentum and adapt to evolving risks."
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Finalize and formalize CSP updates to incorporate the 2024 assessment recommendations and risk-tier priorities."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Operationalize CSP governance through scheduled reviews, executive reporting, and cross-functional oversight committees."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Implement the CSP’s KPI framework—covering segmentation compliance, log-ingestion rates, and recovery exercises—to track progress and trigger corrective actions."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Embed a regular CSP review cadence (e.g., annual refresh, quarterly maturity re-assessments) to ensure controls remain aligned with BC Hydro’s risk tolerance and emerging threats."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "textAlign": null,
+        "level": 3
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "7.d Key Recommendations"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "attrs": {
+        "textAlign": null
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "To advance BC Hydro’s OT cybersecurity posture, the following high-level recommendations should be implemented, each tied to measurable impact objectives:"
+        }
+      ]
+    },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Enforce enterprise-wide segmentation compliance"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Impact: Reduce unauthorized lateral movement risk; target < 5% segmentation exceptions across all sites."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Mandate SOC integration for OT logging"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Impact: Achieve ≥ 90% OT device log ingestion and real-time alerting coverage."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Standardize asset inventory and risk classification"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Impact: Ensure 100% of assets are catalogued and classified annually, enabling prioritized risk mitigation."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Implement unified patch and configuration management"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Impact: Maintain 95% patch compliance on critical vulnerabilities within defined windows."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Embed vendor assurance and OT-specific incident playbooks in CSP"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Impact: Reduce third-party risk and incident dwell time; achieve annual tabletop exercise pass rate ≥ 90%."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Adopt CSP KPI dashboard and governance cadence"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "attrs": {
+                "textAlign": null
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Impact: Provide quarterly executive reports on segmentation, logging, recovery, and compliance metrics to drive continuous improvement."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

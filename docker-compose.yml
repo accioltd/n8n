@@ -1,5 +1,8 @@
-# UP with `docker compose --profile crawl4ai up -d --force-recreate`
 # DOWN with `docker compose --profile crawl4ai down --remove-orphans`
+# BUILD `docker compose --profile crawl4ai build --no-cache`
+# UP with `docker compose --profile crawl4ai up -d --force-recreate`
+
+name: n8n
 
 services:
   # ──────────────────────────────────────────────────────────────
@@ -7,7 +10,7 @@ services:
   # ──────────────────────────────────────────────────────────────
   postgres:
     container_name: postgres_container
-    image: postgres:16-alpine
+    image: pgvector/pgvector:0.8.0-pg16
     environment:
       POSTGRES_USER: n8n
       POSTGRES_PASSWORD: n8n
@@ -29,6 +32,8 @@ services:
     image: n8n-marker:latest
     env_file:
       - .env
+    environment:
+      N8N_CUSTOM_EXTENSIONS: /data/.n8n/custom
     depends_on:
       - postgres
     ports:
@@ -37,6 +42,10 @@ services:
       - n8n_data:/data
       - ./credentials/credentials.json:/tmp/credentials.json:ro
       - ./workflows:/workflows:ro
+      - ./scripts/dist:/data/.n8n/custom:ro
+      - ./scripts/chunker.py:/data/.n8n/chunker.py:ro
+      - ./scripts/extract.py:/data/.n8n/extract.py:ro
+
     restart: unless-stopped
 
   n8n_workflow_init:
@@ -101,34 +110,19 @@ services:
     restart: "no"
 
   # ──────────────────────────────────────────────────────────────
-  # 3) Crawl4AI’s private Redis (profile-guarded)
+  # 3) Adminer Database UI
   # ──────────────────────────────────────────────────────────────
-  crawl4ai_redis:
-    image: redis:7-alpine
-    container_name: crawl4ai_redis_container
-    profiles:
-      - crawl4ai
-    # no ports → only reachable on Compose’s project_default network
-    restart: unless-stopped
-
-  # ──────────────────────────────────────────────────────────────
-  # 4) Crawl4AI Server (profile-guarded)
-  # ──────────────────────────────────────────────────────────────
-  crawl4ai:
-    image: unclecode/crawl4ai:0.6.0-r2
-    container_name: crawl4ai_container
-    profiles:
-      - crawl4ai
-    env_file:
-      - .env
-    ports:
-      - "11235:11235"
+  adminer:
+    container_name: n8n_adminer_container
+    image: adminer:latest
     depends_on:
-      - crawl4ai_redis
-    tmpfs:
-      - /dev/shm:size=1g
+      - postgres
+    ports:
+      - "8082:8080"
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres
+    restart: unless-stopped
 
 volumes:
   n8n_data:
   pg_data:
-# no networks: everyone joins the default Compose project network

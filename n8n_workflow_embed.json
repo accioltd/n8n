@@ -1,0 +1,1482 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "=data",
+        "options": {}
+      },
+      "id": "e0dcc0af-3c9d-4064-bf79-a99b5c7c743f",
+      "name": "Aggregate",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [2660, 1120]
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "aggregation": "concatenate",
+              "field": "data"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fe8797ee-57f0-4651-ac21-502566ff5436",
+      "name": "Summarize",
+      "type": "n8n-nodes-base.summarize",
+      "typeVersion": 1,
+      "position": [2880, 1120]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "2ae7faa7-a936-4621-a680-60c512163034",
+                    "leftValue": "={{ $json.file_mimetype }}",
+                    "rightValue": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "fc193b06-363b-4699-a97d-e5a850138b0e",
+                    "leftValue": "={{ $json.file_mimetype }}",
+                    "rightValue": "=text/csv",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.file_mimetype }}",
+                    "rightValue": "=application/pdf",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "fbdf6e21-c05f-484f-864b-4065e3d17287"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "da9e7a74-908f-4488-844e-9b98b1d1f31b",
+                    "leftValue": "={{ $json.file_mimetype }}",
+                    "rightValue": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "4e87d645-234a-4072-a80e-dde957de88b8",
+                    "leftValue": "={{ $json.file_mimetype }}",
+                    "rightValue": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cf88e58e-b097-4dc8-9fd9-07d8a9f60501",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [2220, 1520],
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "operation": "xlsx",
+        "binaryPropertyName": "={{ Object.keys($binary)[0] }}",
+        "options": {}
+      },
+      "id": "219b02f6-93ea-4657-a2cf-935144ec5c6a",
+      "name": "Extract from Excel",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [2440, 1070]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f422e2e0-381c-46ea-8f38-3f58c501d8b9",
+              "name": "schema",
+              "value": "={{ $('Extract from Excel').isExecuted ? $('Extract from Excel').first().json.keys().toJsonString() : $('Extract from CSV').first().json.keys().toJsonString() }}",
+              "type": "string"
+            },
+            {
+              "id": "bb07c71e-5b60-4795-864c-cc3845b6bc46",
+              "name": "data",
+              "value": "={{ $json.concatenated_data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [3100, 1270],
+      "id": "0b67ffbf-b183-40c9-91a1-ed427b6a084f",
+      "name": "Set Schema"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [2440, 1320],
+      "id": "86a3df0d-56be-4586-b1aa-f2b0963526a2",
+      "name": "Extract from CSV"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "CREATE TABLE IF NOT EXISTS document_metadata (\n    id TEXT PRIMARY KEY,\n    company TEXT,\n    file_id TEXT,\n    file_name TEXT,\n    file_mimetype TEXT,\n    file_size TEXT,\n    file_path TEXT,\n    file_ext TEXT,\n    created_at TIMESTAMP DEFAULT NOW(),\n    schema TEXT\n);",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [680, -120],
+      "id": "f5e7dd12-af56-416c-8e1c-baca24db0009",
+      "name": "Create Document Metadata Table",
+      "executeOnce": true,
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "LtUvizUisCSKWSoT",
+          "name": "Postgres Supabase"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "CREATE TABLE IF NOT EXISTS document_rows (\n    id SERIAL PRIMARY KEY,\n    company TEXT,\n    file_id TEXT REFERENCES document_metadata(id),\n    row_data JSONB  -- Store the actual row data\n);",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [680, 500],
+      "id": "4230f52b-c8a5-446a-9c2c-bc115e3a50b7",
+      "name": "Create Document Rows Table (for Tabular Data)",
+      "alwaysOutputData": true,
+      "executeOnce": true,
+      "credentials": {
+        "postgres": {
+          "id": "LtUvizUisCSKWSoT",
+          "name": "Postgres Supabase"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": false
+        }
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [900, 2040],
+      "id": "740f0d68-44ec-4b79-815a-5bdeb8d94ed0",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "document_metadata",
+          "mode": "list",
+          "cachedResultName": "document_metadata"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Loop Over Items').item.json.file_path }}",
+            "company": "={{ $('Loop Over Items').item.json.company }}",
+            "file_id": "={{ $('Loop Over Items').item.json.file_id }}",
+            "file_name": "={{ $('Loop Over Items').item.json.file_name }}",
+            "file_mimetype": "={{ $('Loop Over Items').item.json.file_mimetype }}",
+            "file_path": "={{ $('Loop Over Items').item.json.file_path }}",
+            "file_ext": "={{ $('Loop Over Items').item.json.file_ext }}",
+            "file_size": "={{ $('Loop Over Items').item.json.file_size }}"
+          },
+          "matchingColumns": ["id"],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": true,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "company",
+              "displayName": "company",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "file_id",
+              "displayName": "file_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "file_name",
+              "displayName": "file_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "file_mimetype",
+              "displayName": "file_mimetype",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "file_size",
+              "displayName": "file_size",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "file_path",
+              "displayName": "file_path",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "title",
+              "displayName": "title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "file_ext",
+              "displayName": "file_ext",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "schema",
+              "displayName": "schema",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [1560, 1895],
+      "id": "7edd338a-a755-496e-bebf-394885c347c1",
+      "name": "Insert Document Metadata",
+      "executeOnce": true,
+      "credentials": {
+        "postgres": {
+          "id": "LtUvizUisCSKWSoT",
+          "name": "Postgres Supabase"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "document_rows",
+          "mode": "list",
+          "cachedResultName": "document_rows"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "row_data": "={{ $json.toJsonString().replaceAll(/'/g, \"''\") }}",
+            "company": "={{ $('Switch').item.json.company }}",
+            "file_id": "={{ $('Switch').item.json.file_id }}"
+          },
+          "matchingColumns": ["id"],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "company",
+              "displayName": "company",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "file_id",
+              "displayName": "file_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_data",
+              "displayName": "row_data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "object",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [2660, 1320],
+      "id": "745cb5a2-5067-4916-b630-f399e3d1d10b",
+      "name": "Insert Table Rows",
+      "credentials": {
+        "postgres": {
+          "id": "LtUvizUisCSKWSoT",
+          "name": "Postgres Supabase"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "document_metadata",
+          "mode": "list",
+          "cachedResultName": "document_metadata"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "schema": "={{ $json.schema }}",
+            "id": "={{ $('Switch').item.json.file_path }}",
+            "company": "={{ $('Switch').item.json.company }}",
+            "file_id": "={{ $('Switch').item.json.file_id }}",
+            "file_name": "={{ $('Switch').item.json.file_name }}",
+            "file_mimetype": "={{ $('Switch').item.json.file_mimetype }}",
+            "file_size": "={{ $('Switch').item.json.file_size }}",
+            "file_path": "={{ $('Switch').item.json.file_path }}",
+            "file_ext": "={{ $('Switch').item.json.file_ext }}"
+          },
+          "matchingColumns": ["id"],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": true,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "company",
+              "displayName": "company",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "file_id",
+              "displayName": "file_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "file_name",
+              "displayName": "file_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "file_mimetype",
+              "displayName": "file_mimetype",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "file_size",
+              "displayName": "file_size",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "file_path",
+              "displayName": "file_path",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "title",
+              "displayName": "title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "file_ext",
+              "displayName": "file_ext",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "schema",
+              "displayName": "schema",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [3320, 1270],
+      "id": "2b946e0a-8b67-4fa7-aebb-965580818c03",
+      "name": "Update Schema for Document Metadata",
+      "credentials": {
+        "postgres": {
+          "id": "LtUvizUisCSKWSoT",
+          "name": "Postgres Supabase"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DO $$\nBEGIN\n    IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'documents_context') THEN\n        EXECUTE 'DELETE FROM documents_context WHERE metadata->>''file_id'' LIKE ''%' || $1 || '%''';\n    END IF;\nEND\n$$;",
+        "options": {
+          "queryReplacement": "={{ $json.file_id }}"
+        }
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [1120, 1895],
+      "id": "07cca490-a89e-450f-beb2-3366c63e4f56",
+      "name": "Delete Old Doc Records",
+      "credentials": {
+        "postgres": {
+          "id": "LtUvizUisCSKWSoT",
+          "name": "Postgres Supabase"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DELETE FROM document_rows\nWHERE file_id LIKE '%' || $1 || '%';",
+        "options": {
+          "queryReplacement": "={{ $('Loop Over Items') .item.json.file_id }}"
+        }
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [1340, 1895],
+      "id": "c9bfd8d4-8a05-475e-8e81-5617c7c1ab57",
+      "name": "Delete Old Data Records",
+      "credentials": {
+        "postgres": {
+          "id": "LtUvizUisCSKWSoT",
+          "name": "Postgres Supabase"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "formTitle": "Upload Files",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "company",
+              "placeholder": "Add company",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "data",
+              "fieldType": "file",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.2,
+      "position": [460, 2045],
+      "id": "56073806-60fb-4168-a0ae-54895712e8b9",
+      "name": "On form submission",
+      "webhookId": "66af3c1f-7299-4071-8b64-8a12f7ef682a"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6c7197dc-01d5-40cb-baff-8938f70860ee",
+              "name": "data",
+              "value": "={{ $('Save MD to Supabase Storage').item.json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [3980, 1699],
+      "id": "e44f8353-85a2-45fc-bbc7-7dc7ea73bf57",
+      "name": "Retrieve Data"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "CREATE TABLE IF NOT EXISTS n8n_chat_histories (\n    id SERIAL PRIMARY KEY,\n    session_id VARCHAR NOT NULL,\n    message JSONB NOT NULL\n);",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [680, 300],
+      "id": "b9fe655f-eca9-4f34-8756-d18c6f6ad3dd",
+      "name": "Create Chat History Table",
+      "credentials": {
+        "postgres": {
+          "id": "LtUvizUisCSKWSoT",
+          "name": "Postgres Supabase"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst path = require('path');\nconst os = require('os');\nconst util = require('util');\nconst { exec } = require('child_process');\nconst execPromise = util.promisify(exec);\n\n// Validate binary input\nconst bin = $input.item.binary?.data || $input.item.binary?.data_0;\nif (!bin || !bin.data || !bin.fileName) {\n  throw new Error('Missing binary data or filename');\n}\n\n// Create safe temp directory\nconst tmpDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), 'upload-'));\n\n// Write original file (PPTX) to disk\nconst fileName = bin.fileName;\nconst pptxPath = path.join(tmpDir, fileName);\nawait fs.promises.writeFile(pptxPath, Buffer.from(bin.data, 'base64'));\n\n// Derive PDF path and base name\nconst baseName = fileName.replace(/\\.[^.]+$/, '');\nconst pdfFile = `${baseName}.pdf`;\nconst pdfPath = path.join(tmpDir, pdfFile);\nconst pngPrefix = path.join(tmpDir, `${baseName}-page`);\n\n// Convert PPTX → PDF using LibreOffice\ntry {\n  await execPromise(`libreoffice --headless --convert-to pdf --outdir \"${tmpDir}\" \"${pptxPath}\"`);\n} catch (err) {\n  throw new Error(`❌ LibreOffice conversion failed: ${err.message}`);\n}\n\n// Read the converted PDF back into binary\nconst pdfBuffer = await fs.promises.readFile(pdfPath);\n\n// Output PDF binary for downstream\nreturn [{\n  json: {\n    pdf_path: pdfPath,\n    output_dir: tmpDir,\n    output_prefix: pngPrefix,\n    base_name: baseName,\n  },\n  binary: {\n    data: {\n      data: pdfBuffer.toString('base64'),\n      mimeType: 'application/pdf',\n      fileName: pdfFile,\n    }\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2440, 1720],
+      "id": "e2f97dff-cb49-4a48-a5a3-9b41490c1b1f",
+      "name": "PPTX -> PDF"
+    },
+    {
+      "parameters": {
+        "content": "## 3) Embed Documents Manually \npdf, pptx, xlsx, csv, txt"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [160, 1520],
+      "id": "70834bc8-b63c-40ea-9009-faae31253216",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst path = require('path');\n\nconst out = [];\n\nfor (const inItem of $input.all()) {\n  const dir = inItem.json.output_dir;\n  const base = inItem.json.base_name;\n\n  if (!dir || !base) throw new Error('Missing output_dir or base_name');\n\n  const files = fs.readdirSync(dir);\n  const pages = files\n    .filter(f => f.startsWith(`${base}-page`) && f.endsWith('.png'))\n    .sort(); // Ensure page order\n\n  for (const fileName of pages) {\n    out.push({\n      json: {\n        page: fileName,\n        full_path: path.join(dir, fileName),\n        base_name: base,\n        dir,\n      },\n    });\n  }\n}\n\nreturn out;"
+      },
+      "id": "b4a1145f-3920-4aae-aeea-e0199a8c8329",
+      "name": "Collect all image paths",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2880, 1699]
+    },
+    {
+      "parameters": {
+        "fileSelector": "={{ $json.full_path }}",
+        "options": {
+          "dataPropertyName": "image"
+        }
+      },
+      "id": "854a4645-4d7e-43b1-a1b6-d0cd2dd0596d",
+      "name": "Get all image binaries",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [3100, 1699]
+    },
+    {
+      "parameters": {
+        "jsCode": "const endpoint   = $env.OPENAI_API_BASE.replace(/\\/$/, '');\nconst apiKey     = $env.OPENAI_API_KEY;\nconst model      = 'gpt-4.1-nano';\n\nif (!apiKey) throw new Error('OPENAI_API_KEY missing');\n\nconst MAX_TOKENS    = 30000;\nconst PARALLEL      = 50;\nconst LAUNCH_DELAY  = 100;\nconst MAX_RETRIES   = 3;\nconst BASE_BACKOFF  = 1000;\nconst TIMEOUT       = 30000;\nconst TEMPERATURE   = 0.1;\n\nconst sleep = ms => new Promise(r => setTimeout(r, ms));\n\nasync function callOpenAI(b64, page) {\n  for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {\n    try {\n      console.log(`▶️  page ${page} – attempt ${attempt + 1}`);\n      const res = await this.helpers.httpRequest({\n        method: 'POST',\n        url: `${endpoint}/chat/completions`,\n        json: true,\n        timeout: TIMEOUT,\n        headers: {\n          Authorization: `Bearer ${apiKey}`,\n          'Content-Type': 'application/json'\n        },\n        body: {\n          model,\n          temperature: TEMPERATURE,\n          max_tokens: MAX_TOKENS,\n          messages: [\n            {\n              role: 'system',\n              content: 'You are an assistant that returns complete markdown descriptions of documents for cybersecurity experts, which will be provided as images taken from a single pdf page. Quote all on-page text verbatim, output tables as CSV wrapped in triple backticks labeled ```csv, and describe important images.',\n            },\n            {\n              role: 'user',\n              content: [\n                { type: 'text', text: `Describe page ${page} in detail:` },\n                {\n                  type: 'image_url',\n                  image_url: { url: `data:image/png;base64,${b64}` },\n                },\n              ],\n            },\n          ],\n        },\n      });\n\n      const txt = res.choices?.[0]?.message?.content?.trim() || '';\n      console.log(`✅  page ${page} – ${txt.length} chars`);\n      return txt;\n    } catch (err) {\n      console.error(`⚠️  page ${page} – ${err.message}`);\n      if (attempt === MAX_RETRIES - 1)\n        return `❌ error on page ${page}: ${err.message}`;\n      const wait = BASE_BACKOFF * 2 ** attempt;\n      console.log(`⏳  retry page ${page} in ${wait} ms`);\n      await sleep(wait);\n    }\n  }\n}\n\nconst inputItems = $input.all();\nconst outputs = [];\n\nfor (let start = 0; start < inputItems.length; start += PARALLEL) {\n  const slice = inputItems.slice(start, start + PARALLEL);\n\n  const promises = slice.map((item, idxInSlice) => (async () => {\n    await sleep(idxInSlice * LAUNCH_DELAY);\n\n    const globalIdx = start + idxInSlice;\n    const pageNo = item.json.page ?? globalIdx + 1;\n\n    const md = await callOpenAI.call(this, item.binary.image.data, pageNo);\n\n    return {\n      json: {\n        page: pageNo,\n        data: md,\n        directory: item.json.directory,\n        fileName: item.json.fileName,\n        base: item.json.base,\n        output_dir: item.json.output_dir,\n      },\n    };\n  })());\n\n  outputs.push(...await Promise.all(promises));\n}\n\noutputs.sort((a, b) => a.json.page - b.json.page);\nconst full = outputs.map(p => `## Page ${p.json.page}\\n\\n${p.json.data}`).join('\\n\\n');\noutputs.push({\n  json: {\n    concatenated_data: full,\n    output_dir: inputItems[0]?.json?.output_dir || null\n  }\n});\n\nreturn outputs;\n"
+      },
+      "id": "13513b77-2da7-4f09-b701-14928a1e4731",
+      "name": "PNG -> MD using AI",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [3320, 1700]
+    },
+    {
+      "parameters": {
+        "content": "## 1) Create Tables\nCreate tables if they don't exist"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [180, 200],
+      "id": "50025c27-9cff-47bf-ba2b-1b8c42bf9dbe",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code node (Run Once for All Items)\n\n// 1) pull your Supabase config from env\nconst SUPABASE_URL = $env.SUPABASE_URL.replace(/\\/$/, '');           // e.g. https://sxnsaozrsxyzcpxrkjxb.supabase.co\nconst SUPABASE_KEY = $env.SUPABASE_SERVICE_ROLE_KEY;                 // service-role key\nconst BUCKET       = 'c3app';\n\n// 2) list files with POST + JSON body\nconst files = await this.helpers.httpRequest({\n  method:  'POST',                                                 // ← POST, not GET\n  url:     `${SUPABASE_URL}/storage/v1/object/list/${BUCKET}`,\n  headers: {\n    apikey:        SUPABASE_KEY,\n    Authorization: `Bearer ${SUPABASE_KEY}`,\n    'Content-Type': 'application/json',\n  },\n  body:    { prefix: '' },                                         // ← required parameter\n  json:    true,                                                   // parse response as JSON\n});\n\n// 3) validate & emit\nif (!Array.isArray(files)) {\n  throw new Error('Unexpected response: ' + JSON.stringify(files));\n}\nreturn files.map(f => ({ json: f }));\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [480, 2440],
+      "id": "2b0e1737-ab90-4e19-8eec-925e298d603c",
+      "name": "Supabase | Get all files from bucket"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code node (Mode: “Run Once for All Items”)\n// Reads each listed file from your Supabase “c3app” bucket\n// and returns its original JSON plus a binary.data object.\n\n// 1) grab your Supabase settings from env\nconst SUPABASE_URL = $env.SUPABASE_URL.replace(/\\/$/, '');\nconst SUPABASE_KEY = $env.SUPABASE_SERVICE_ROLE_KEY;\nconst BUCKET       = 'c3app';\n\n// 2) get all incoming items (each has json.name, id, metadata, etc.)\nconst items = $input.all();\nconst out   = [];\n\nfor (const item of items) {\n  const fileName = item.json.name;\n  const url = `${SUPABASE_URL}/storage/v1/object/${BUCKET}/${encodeURIComponent(fileName)}`;\n\n  // 3) download raw bytes\n  const buffer = await this.helpers.httpRequest({\n    method:       'GET',\n    url,\n    headers: {\n      apikey:        SUPABASE_KEY,\n      Authorization: `Bearer ${SUPABASE_KEY}`,\n    },\n    responseType: 'arraybuffer',  // return a Buffer\n  });\n\n  // 4) convert to Base64\n  const base64 = Buffer.from(buffer).toString('base64');\n\n  // 5) push an output item with both json + binary\n  out.push({\n    json: item.json,\n    binary: {\n      data: {\n        fileName,\n        data:          base64,\n        mimeType:      item.json.metadata.mimetype,\n        fileExtension: fileName.split('.').pop(),\n        fileSize:      item.json.metadata.size || item.json.metadata.contentLength,\n      },\n    },\n  });\n}\n\nreturn out;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [700, 2440],
+      "id": "d14deb4e-f42a-489b-9899-63cfd04befd5",
+      "name": "Supabase | Fetches all files"
+    },
+    {
+      "parameters": {
+        "jsCode": "const markdown = items[0].json.data;\nconst lines = markdown.split('\\n');\nconst chunks = [];\n\nlet currentChunk = { heading: '', level: 0, content: '' };\nlet currentPageHeading = '';  // Tracks latest \"Page X\" heading\n\nfor (const line of lines) {\n  const match = line.match(/^(#{1,6})\\s+(.*)/);\n\n  if (match) {\n    if (currentChunk.content.trim()) {\n      chunks.push({ ...currentChunk });\n    }\n\n    const level = match[1].length;\n    const headingText = match[2].trim();\n\n    // Update current page context if this is a \"Page X\" heading\n    const pageMatch = headingText.match(/^Page\\s+\\d+$/i);\n    if (pageMatch) {\n      currentPageHeading = headingText;\n      currentChunk = {\n        heading: headingText,\n        level,\n        content: ''\n      };\n    } else {\n      currentChunk = {\n        heading: currentPageHeading\n          ? `${currentPageHeading} | ${headingText}`\n          : headingText,\n        level,\n        content: ''\n      };\n    }\n\n  } else {\n    currentChunk.content += line + '\\n';\n  }\n}\n\nif (currentChunk.content.trim()) {\n  chunks.push({ ...currentChunk });\n}\n\n// Return one item per chunk\nreturn chunks.map(chunk => ({\n  json: {\n    heading: chunk.heading,\n    level: chunk.level,\n    content: chunk.heading + \"\\n\" + chunk.content.trim() + \":\"\n  }\n}));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [4200, 1700],
+      "id": "07053da7-021f-4ecb-a4fa-14a9a929d282",
+      "name": "Create Smart Chunks"
+    },
+    {
+      "parameters": {
+        "jsCode": "const fs = require('fs').promises;\nconst path = require('path');\nconst os = require('os');\nconst util = require('util');\nconst { exec } = require('child_process');\nconst execPromise = util.promisify(exec);\n\n// Get incoming binary data (assumes it's in binary.data)\nconst bin = $input.item.binary?.data || $input.item.binary?.data_0;\nif (!bin) throw new Error('No binary \"data\" found in item.');\n\nconst buffer = Buffer.from(bin.data, 'base64');\nconst originalName = bin.fileName || 'document.pdf';\nconst baseName = originalName.replace(/\\.pdf$/i, '');\n\n// Create a temp directory and file path\nconst tempDir = await fs.mkdtemp(path.join(os.tmpdir(), 'pdf-'));\nconst pdfPath = path.join(tempDir, originalName);\nconst outputPrefix = path.join(tempDir, `${baseName}-page`);\n\n// Write PDF to disk\nawait fs.writeFile(pdfPath, buffer);\n\n// Convert to PNG using pdftoppm\nawait execPromise(`pdftoppm -png -r 150 \"${pdfPath}\" \"${outputPrefix}\"`);\n\n// Output metadata\nreturn [\n  {\n    json: {\n      pdf_path: pdfPath,\n      output_dir: tempDir,\n      output_prefix: `${outputPrefix}`,\n      base_name: baseName,\n    },\n  },\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2660, 1699],
+      "id": "454cecad-5289-4be0-9e65-8da84e81665d",
+      "name": "PDF -> PNG"
+    },
+    {
+      "parameters": {
+        "mode": "chooseBranch",
+        "useDataOfInput": 2
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.1,
+      "position": [1780, 2045],
+      "id": "ae9865af-71e9-4f1a-8f14-a49815a3ad9a",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "jsCode": "const SUPABASE_URL = ($env.SUPABASE_URL || '').replace(/\\/$/, '');\nconst SUPABASE_KEY = $env.SUPABASE_SERVICE_ROLE_KEY;\nconst BUCKET = 'c3app';\n\nif (!SUPABASE_URL || !SUPABASE_KEY) {\n  throw new Error('Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY');\n}\n\nconst items = $input.all();\nconst first = items[0]?.json || {};\nconst company = (first.company || 'default').replace(/\\s+/g, '_');\nconst base = first.base || 'document';\nconst directory = first.directory || null;\nconst output_dir = first.output_dir || null;\n\nconst pages = items.filter(i => typeof i.json.page === 'number' && typeof i.json.data === 'string')\n                   .sort((a, b) => a.json.page - b.json.page);\n\nif (pages.length === 0) throw new Error('No per-page items to aggregate');\n\nlet md = `# ${base}\\n\\n`;\nfor (const p of pages) {\n  md += `## Page ${p.json.page}\\n\\n${p.json.data.trim()}\\n\\n`;\n}\n\nconst fileName = `${base}.md`;\nconst filePath = `${company}/${fileName}`;\nconst buffer = Buffer.from(md, 'utf8');\n\nawait this.helpers.httpRequest({\n  method: 'POST',\n  url: `${SUPABASE_URL}/storage/v1/object/${BUCKET}/${filePath}`,\n  headers: {\n    apikey: SUPABASE_KEY,\n    Authorization: `Bearer ${SUPABASE_KEY}`,\n    'Content-Type': 'text/markdown',\n    'Content-Length': buffer.length,\n    'x-upsert': 'true',\n  },\n  body: buffer,\n  responseFormat: 'json',\n});\n\nreturn [{\n  json: {\n    saved: filePath,\n    company,\n    file_id: `${company}-${fileName.replace(/\\s/g, '_')}`,\n    file_name: fileName,\n    file_path: filePath,\n    file_size: buffer.length,\n    file_mimetype: 'text/markdown',\n    file_ext: 'md',\n    data: md,\n    directory,\n    output_dir,\n    base\n  },\n  binary: {\n    data: {\n      data: buffer.toString('base64'),\n      mimeType: 'text/markdown',\n      fileName,\n    }\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [3540, 1699],
+      "id": "dd6358e3-4f07-4cac-a4cc-673c78810fb5",
+      "name": "Save MD to Supabase Storage"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Upload files to Supabase Storage under company-named folder\n// Keeps original file name (no timestamp prefix)\n\nconst SUPABASE_URL = $env.SUPABASE_URL.replace(/\\/$/, '');\nconst SUPABASE_KEY = $env.SUPABASE_SERVICE_ROLE_KEY;\nconst BUCKET = 'c3app';\n\nconst out = [];\n\nfor (const item of $input.all()) {\n  const company = item.json.company.replace(/\\s+/g, '_'); // Normalize folder name\n  const binKeys = Object.keys(item.binary || {});\n\n  for (const key of binKeys) {\n    const bin = item.binary[key];\n    const buffer = Buffer.from(bin.data, 'base64');\n    const fileName = bin.fileName;\n    const filePath = `${company}/${fileName}`; // e.g., BC_Hydro/ESA.pdf\n\n    await this.helpers.httpRequest({\n      method: 'POST',\n      url: `${SUPABASE_URL}/storage/v1/object/${BUCKET}/${filePath}`,\n      headers: {\n        apikey: SUPABASE_KEY,\n        Authorization: `Bearer ${SUPABASE_KEY}`,\n        'Content-Type': bin.mimeType,\n        'Content-Length': buffer.length,\n        'x-upsert': 'true'\n      },\n      body: buffer,\n      responseFormat: 'json'\n    });\n\n    out.push({\n      json: {\n        company: item.json.company,\n        file_id: filePath,\n        file_name: fileName,\n        file_path: filePath,\n        file_size: bin.fileSize || buffer.length,\n        file_mimetype: bin.mimeType,\n        file_ext: fileName.split('.').pop(),\n      },\n      binary: {\n        [key]: bin,\n      }\n    });\n  }\n}\n\nreturn out;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [680, 2040],
+      "id": "99d74456-4c27-43d6-a4b6-e4cd342d7f7e",
+      "name": "Save Original File to Supabase Storage"
+    },
+    {
+      "parameters": {
+        "jsCode": "const fs = require('fs');\n\nconst out = [];\n\nfor (const itm of $input.all()) {\n  const directory = itm.json.output_dir;\n\n  if (!directory) {\n    out.push({\n      json: {\n        cleaned: false,\n        error: 'output_dir missing',\n        saved: itm.json.saved || null\n      }\n    });\n    continue;\n  }\n\n  try {\n    fs.rmSync(directory, { recursive: true, force: true });\n    out.push({\n      json: {\n        cleaned: true,\n        error: null,\n        saved: itm.json.saved || null\n      }\n    });\n  } catch (err) {\n    out.push({\n      json: {\n        cleaned: false,\n        error: `Failed to delete: ${err.message}`,\n        saved: itm.json.saved || null\n      }\n    });\n  }\n}\n\nreturn out;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [3760, 1699],
+      "id": "2990f573-db0e-4570-95ae-de845c2ce2aa",
+      "name": "Delete Temporary Folder"
+    },
+    {
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst path = require('path');\n\nconst TMP_DIR = '/tmp';\nconst deleted = [];\n\nfor (const file of fs.readdirSync(TMP_DIR)) {\n  const fullPath = path.join(TMP_DIR, file);\n\n  // Skip directories and only target files with no extension\n  const isFile = fs.statSync(fullPath).isFile();\n  const hasNoExtension = path.extname(file) === '';\n\n  if (isFile && hasNoExtension) {\n    try {\n      fs.unlinkSync(fullPath);\n      deleted.push(file);\n    } catch (err) {\n      console.warn(`Failed to delete ${file}: ${err.message}`);\n    }\n  }\n}\n\nreturn [\n  {\n    json: {\n      cleaned_files: deleted,\n      count: deleted.length,\n    },\n  },\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [920, 2440],
+      "id": "8bc6fc58-8e90-43e7-9f8d-072501440f77",
+      "name": "Delete everything in /tmp"
+    },
+    {
+      "parameters": {
+        "jsCode": "const endpoint = 'https://api.openai.com/v1/embeddings';\nconst apiKey = $env.OPENAI_API_KEY;\nconst model = 'text-embedding-3-small'; // or use 'text-embedding-3-large'\nconst PARALLEL = 50;\nconst TIMEOUT = 30000;\nconst MAX_RETRIES = 3;\nconst BASE_BACKOFF = 1000;\n\nconst sleep = ms => new Promise(r => setTimeout(r, ms));\n\nasync function embed(text, attempt = 0) {\n  try {\n    const res = await this.helpers.httpRequest({\n      method: 'POST',\n      url: endpoint,\n      json: true,\n      timeout: TIMEOUT,\n      headers: {\n        Authorization: `Bearer ${apiKey}`,\n        'Content-Type': 'application/json'\n      },\n      body: {\n        model,\n        input: text\n      }\n    });\n\n    return res.data?.[0]?.embedding;\n  } catch (err) {\n    if (attempt >= MAX_RETRIES - 1) {\n      throw new Error(`Embedding failed: ${err.message}`);\n    }\n    const wait = BASE_BACKOFF * 2 ** attempt;\n    console.warn(`Retrying in ${wait}ms...`);\n    await sleep(wait);\n    return embed(text, attempt + 1);\n  }\n}\n\n// ---------- Batch Parallel Processing ----------\nconst items = $input.all();\nconst output = [];\n\nfor (let i = 0; i < items.length; i += PARALLEL) {\n  const slice = items.slice(i, i + PARALLEL);\n\n  const batch = await Promise.all(\n    slice.map(async (item, idx) => {\n      const text = item.json.content;\n      const embedding = await embed.call(this, text);\n\n      return {\n        json: {\n          embedding,\n          content: text,\n          heading: item.json.heading,\n          level: item.json.level,\n        },\n      };\n    })\n  );\n\n  output.push(...batch);\n}\n\nreturn output;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [4420, 1399],
+      "id": "31c63658-d8de-4549-abce-12a5e7e29034",
+      "name": "Create Embeddings"
+    },
+    {
+      "parameters": {
+        "jsCode": "const out = [];\n$input.all().forEach((item, index) => {\n  out.push({\n    json: {\n      ...item.json,\n      chunk_index: index\n    }\n  });\n});\nreturn out;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [4640, 1399],
+      "id": "506c2229-51e8-4c83-9d4a-0b99da3bb590",
+      "name": "Get Chunk Index"
+    },
+    {
+      "parameters": {
+        "jsCode": "const SUPABASE_URL = ($env.SUPABASE_URL || '').replace(/\\/$/, '');\nconst SUPABASE_KEY = $env.SUPABASE_SERVICE_ROLE_KEY;\nconst TABLE = 'documents_context';\nconst BATCH_SIZE = 50;\n\nif (!SUPABASE_URL || !SUPABASE_KEY) {\n  throw new Error('Missing Supabase environment variables');\n}\n\n// Pull metadata from the first item (assuming it's constant)\nconst source = $input.first().json;\nconst company = $('Loop').first().json.company\nconst file_id = source.metadata?.file_id;\nconst file_name = source.metadata?.file_name || '';\nconst file_path = source.metadata?.file_path || '';\nconst file_size = source.metadata?.file_size || '';\n\nfunction isValidEmbedding(v) {\n  return Array.isArray(v) && typeof v[0] === 'number';\n}\n\nconst input = $input.all();\nconst out = [];\n\nfor (let i = 0; i < input.length; i += BATCH_SIZE) {\n  const batch = input.slice(i, i + BATCH_SIZE);\n  const payload = [];\n\n  for (const [j, item] of batch.entries()) {\n    const embedding = item.json.embedding;\n    const content = item.json.content;\n\n    if (!isValidEmbedding(embedding)) {\n      console.warn(`Skipping invalid embedding at index ${i + j}`);\n      continue;\n    }\n\n    payload.push({\n      text: content,\n      embedding,\n      company,\n      metadata: {\n        company,\n        file_id,\n        file_name,\n        file_path,\n        file_size,\n        heading: item.json.heading || '',\n        level: item.json.level ?? 0,\n        chunk_index: item.json.chunk_index ?? i + j,\n        category_scores: item.json.category_scores ?? {}\n      }\n    });\n  }\n\n  console.log(`📤 Inserting ${payload.length} records to Supabase (Batch ${i / BATCH_SIZE + 1})`);\n\n  try {\n    await this.helpers.httpRequest({\n      method: 'POST',\n      url: `${SUPABASE_URL}/rest/v1/${TABLE}`,\n      headers: {\n        apikey: SUPABASE_KEY,\n        Authorization: `Bearer ${SUPABASE_KEY}`,\n        'Content-Type': 'application/json',\n        Prefer: 'return=minimal',\n      },\n      body: payload,\n      json: true,\n    });\n\n    out.push({ json: { batch: i / BATCH_SIZE + 1, inserted: payload.length } });\n  } catch (err) {\n    console.error('❌ Supabase insert error:', JSON.stringify(err.response?.body || err, null, 2));\n    throw new Error(`Supabase insert failed: ${err.message}`);\n  }\n}\n\nconsole.log('✅ All batches inserted');\nreturn out;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [5080, 1570],
+      "id": "00b0afd2-f94f-4b66-bd5b-ba3582b10835",
+      "name": "Embed Chunks"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "CREATE TABLE IF NOT EXISTS csf_category_embeddings (\n  id TEXT PRIMARY KEY,\n  name TEXT,\n  description TEXT,\n  embedding VECTOR\n);",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [460, 760],
+      "id": "5bf929c4-78b5-46a1-a1ab-6eb578e4f895",
+      "name": "Create csf_category_embeddings table",
+      "credentials": {
+        "postgres": {
+          "id": "LtUvizUisCSKWSoT",
+          "name": "Postgres Supabase"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## 2) Create NIST Category Embeddings\nCreate tables if they don't exist"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [180, 500],
+      "id": "a88235af-73a6-4df9-a32f-361633bb55bd",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "jsCode": "const SUPABASE_URL = $env.SUPABASE_URL.replace(/\\/$/, '');\nconst SUPABASE_KEY = $env.SUPABASE_SERVICE_ROLE_KEY;\nconst TABLE = 'csf_category_embeddings';\nconst EMBED_MODEL = 'text-embedding-3-small';\n\nconst endpoint = 'https://api.openai.com/v1/embeddings';\nconst apiKey = $env.OPENAI_API_KEY;\nconst TIMEOUT = 30000;\n\nconst categories = [\n  {\n    id: \"GV.OC\",\n    name: \"Organizational Context\",\n    description: `The circumstances - mission, stakeholder expectations, dependencies, and legal, regulatory, and contractual requirements - surrounding the organization's cybersecurity risk management decisions are understood\nSubcategories:\nGV.OC-01: The organizational mission is understood and informs cybersecurity risk management\nGV.OC-02: Internal and external stakeholders are understood, and their needs and expectations regarding cybersecurity risk management are understood and considered\nGV.OC-03: Legal, regulatory, and contractual requirements regarding cybersecurity - including privacy and civil liberties obligations - are understood and managed\nGV.OC-04: Critical objectives, capabilities, and services that stakeholders depend on or expect from the organization are understood and communicated\nGV.OC-05: Outcomes, capabilities, and services that the organization depends on are understood and communicated`\n  },\n  {\n    id: \"GV.RM\",\n    name: \"Risk Management Strategy\",\n    description: `The organization's priorities, constraints, risk tolerance and appetite statements, and assumptions are established, communicated, and used to support operational risk decisions\nSubcategories:\nGV.RM-01: Risk management objectives are established and agreed to by organizational stakeholders\nGV.RM-02: Risk appetite and risk tolerance statements are established, communicated, and maintained\nGV.RM-03: Cybersecurity risk management activities and outcomes are included in enterprise risk management processes\nGV.RM-04: Strategic direction that describes appropriate risk response options is established and communicated\nGV.RM-05: Lines of communication across the organization are established for cybersecurity risks, including risks from suppliers and other third parties\nGV.RM-06: A standardized method for calculating, documenting, categorizing, and prioritizing cybersecurity risks is established and communicated\nGV.RM-07: Strategic opportunities (i.e., positive risks) are characterized and are included in organizational cybersecurity risk discussions`\n  },\n  {\n    id: \"GV.RR\",\n    name: \"Roles, Responsibilities, and Authorities\",\n    description: `Cybersecurity roles, responsibilities, and authorities to foster accountability, performance assessment, and continuous improvement are established and communicated\nSubcategories:\nGV.RR-01: Organizational leadership is responsible and accountable for cybersecurity risk and fosters a culture that is risk-aware, ethical, and continually improving\nGV.RR-02: Roles, responsibilities, and authorities related to cybersecurity risk management are established, communicated, understood, and enforced\nGV.RR-03: Adequate resources are allocated commensurate with the cybersecurity risk strategy, roles, responsibilities, and policies\nGV.RR-04: Cybersecurity is included in human resources practices`\n  },\n  {\n    id: \"GV.PO\",\n    name: \"Policy\",\n    description: `Organizational cybersecurity policy is established, communicated, and enforced\nSubcategories:\nGV.PO-01: Policy for managing cybersecurity risks is established based on organizational context, cybersecurity strategy, and priorities and is communicated and enforced\nGV.PO-02: Policy for managing cybersecurity risks is reviewed, updated, communicated, and enforced to reflect changes in requirements, threats, technology, and organizational mission`\n  },\n  {\n    id: \"GV.OV\",\n    name: \"Oversight\",\n    description: `Results of organization-wide cybersecurity risk management activities and performance are used to inform, improve, and adjust the risk management strategy\nSubcategories:\nGV.OV-01: Cybersecurity risk management strategy outcomes are reviewed to inform and adjust strategy and direction\nGV.OV-02: The cybersecurity risk management strategy is reviewed and adjusted to ensure coverage of organizational requirements and risks\nGV.OV-03: Organizational cybersecurity risk management performance is evaluated and reviewed for adjustments needed`\n  },\n  {\n  id: \"GV.SC\",\n  name: \"Cybersecurity Supply Chain Risk Management\",\n  description: `Cyber supply chain risk management processes are identified, established, managed, monitored, and improved by organizational stakeholders\nSubcategories:\nGV.SC-01: A cybersecurity supply chain risk management program, strategy, objectives, policies, and processes are established and agreed to by organizational stakeholders\nGV.SC-02: Cybersecurity roles and responsibilities for suppliers, customers, and partners are established, communicated, and coordinated internally and externally\nGV.SC-03: Cybersecurity supply chain risk management is integrated into cybersecurity and enterprise risk management, risk assessment, and improvement processes\nGV.SC-04: Suppliers are known and prioritized by criticality\nGV.SC-05: Requirements to address cybersecurity risks in supply chains are established, prioritized, and integrated into contracts and other types of agreements with suppliers and other relevant third parties\nGV.SC-06: Planning and due diligence are performed to reduce risks before entering into formal supplier or other third-party relationships\nGV.SC-07: The risks posed by a supplier, their products and services, and other third parties are understood, recorded, prioritized, assessed, responded to, and monitored over the course of the relationship\nGV.SC-08: Relevant suppliers and other third parties are included in incident planning, response, and recovery activities\nGV.SC-09: Supply chain security practices are integrated into cybersecurity and enterprise risk management programs, and their performance is monitored throughout the technology product and service life cycle\nGV.SC-10: Cybersecurity supply chain risk management plans include provisions for activities that occur after the conclusion of a partnership or service agreement`\n},\n{\n  id: \"ID.AM\",\n  name: \"Asset Management\",\n  description: `Assets (e.g., data, hardware, software, systems, facilities, services, people) that enable the organization to achieve business purposes are identified and managed consistent with their relative importance to organizational objectives and the organization's risk strategy\nSubcategories:\nID.AM-01: Inventories of hardware managed by the organization are maintained\nID.AM-02: Inventories of software, services, and systems managed by the organization are maintained\nID.AM-03: Representations of the organization's authorized network communication and internal and external network data flows are maintained\nID.AM-04: Inventories of services provided by suppliers are maintained\nID.AM-05: Assets are prioritized based on classification, criticality, resources, and impact on the mission\nID.AM-07: Inventories of data and corresponding metadata for designated data types are maintained\nID.AM-08: Systems, hardware, software, services, and data are managed throughout their life cycles`\n},\n{\n  id: \"ID.RA\",\n  name: \"Risk Assessment\",\n  description: `The cybersecurity risk to the organization, assets, and individuals is understood by the organization\nSubcategories:\nID.RA-01: Vulnerabilities in assets are identified, validated, and recorded\nID.RA-02: Cyber threat intelligence is received from information sharing forums and sources\nID.RA-03: Internal and external threats to the organization are identified and recorded\nID.RA-04: Potential impacts and likelihoods of threats exploiting vulnerabilities are identified and recorded\nID.RA-05: Threats, vulnerabilities, likelihoods, and impacts are used to understand inherent risk and inform risk response prioritization\nID.RA-06: Risk responses are chosen, prioritized, planned, tracked, and communicated\nID.RA-07: Changes and exceptions are managed, assessed for risk impact, recorded, and tracked\nID.RA-08: Processes for receiving, analyzing, and responding to vulnerability disclosures are established\nID.RA-09: The authenticity and integrity of hardware and software are assessed prior to acquisition and use\nID.RA-10: Critical suppliers are assessed prior to acquisition`\n},\n{\n  id: \"ID.IM\",\n  name: \"Improvement\",\n  description: `Improvements to organizational cybersecurity risk management processes, procedures and activities are identified across all CSF Functions\nSubcategories:\nID.IM-01: Improvements are identified from evaluations\nID.IM-02: Improvements are identified from security tests and exercises, including those done in coordination with suppliers and relevant third parties\nID.IM-03: Improvements are identified from execution of operational processes, procedures, and activities\nID.IM-04: Incident response plans and other cybersecurity plans that affect operations are established, communicated, maintained, and improved`\n},\n{\n  id: \"PR.AA\",\n  name: \"Identity Management, Authentication, and Access Control\",\n  description: `Access to physical and logical assets is limited to authorized users, services, and hardware and managed commensurate with the assessed risk of unauthorized access\nSubcategories:\nPR.AA-01: Identities and credentials for authorized users, services, and hardware are managed by the organization\nPR.AA-02: Identities are proofed and bound to credentials based on the context of interactions\nPR.AA-03: Users, services, and hardware are authenticated\nPR.AA-04: Identity assertions are protected, conveyed, and verified\nPR.AA-05: Access permissions, entitlements, and authorizations are defined in a policy, managed, enforced, and reviewed, and incorporate the principles of least privilege and separation of duties\nPR.AA-06: Physical access to assets is managed, monitored, and enforced commensurate with risk`\n},\n  {\n  id: \"PR.AT\",\n  name: \"Awareness and Training\",\n  description: `The organization's personnel are provided with cybersecurity awareness and training so that they can perform their cybersecurity-related tasks\nSubcategories:\nPR.AT-01: Personnel are provided with awareness and training so that they possess the knowledge and skills to perform general tasks with cybersecurity risks in mind\nPR.AT-02: Individuals in specialized roles are provided with awareness and training so that they possess the knowledge and skills to perform relevant tasks with cybersecurity risks in mind`\n},\n{\n  id: \"PR.DS\",\n  name: \"Data Security\",\n  description: `Data are managed consistent with the organization's risk strategy to protect the confidentiality, integrity, and availability of information\nSubcategories:\nPR.DS-01: The confidentiality, integrity, and availability of data-at-rest are protected\nPR.DS-02: The confidentiality, integrity, and availability of data-in-transit are protected\nPR.DS-10: The confidentiality, integrity, and availability of data-in-use are protected\nPR.DS-11: Backups of data are created, protected, maintained, and tested`\n},\n{\n  id: \"PR.PS\",\n  name: \"Platform Security\",\n  description: `The hardware, software (e.g., firmware, operating systems, applications), and services of physical and virtual platforms are managed consistent with the organization's risk strategy to protect their confidentiality, integrity, and availability\nSubcategories:\nPR.PS-01: Configuration management practices are established and applied\nPR.PS-02: Software is maintained, replaced, and removed commensurate with risk\nPR.PS-03: Hardware is maintained, replaced, and removed commensurate with risk\nPR.PS-04: Log records are generated and made available for continuous monitoring\nPR.PS-05: Installation and execution of unauthorized software are prevented\nPR.PS-06: Secure software development practices are integrated, and their performance is monitored throughout the software development life cycle`\n},\n{\n  id: \"PR.IR\",\n  name: \"Technology Infrastructure Resilience\",\n  description: `Security architectures are managed with the organization's risk strategy to protect asset confidentiality, integrity, and availability, and organizational resilience\nSubcategories:\nPR.IR-01: Networks and environments are protected from unauthorized logical access and usage\nPR.IR-02: The organization's technology assets are protected from environmental threats\nPR.IR-03: Mechanisms are implemented to achieve resilience requirements in normal and adverse situations\nPR.IR-04: Adequate resource capacity to ensure availability is maintained`\n},\n{\n  id: \"DE.CM\",\n  name: \"Continuous Monitoring\",\n  description: `Assets are monitored to find anomalies, indicators of compromise, and other potentially adverse events\nSubcategories:\nDE.CM-01: Networks and network services are monitored to find potentially adverse events\nDE.CM-02: The physical environment is monitored to find potentially adverse events\nDE.CM-03: Personnel activity and technology usage are monitored to find potentially adverse events\nDE.CM-06: External service provider activities and services are monitored to find potentially adverse events\nDE.CM-09: Computing hardware and software, runtime environments, and their data are monitored to find potentially adverse events`\n},\n  {\n  id: \"DE.AE\",\n  name: \"Adverse Event Analysis\",\n  description: `Anomalies, indicators of compromise, and other potentially adverse events are analyzed to characterize the events and detect cybersecurity incidents\nSubcategories:\nDE.AE-02: Potentially adverse events are analyzed to better understand associated activities\nDE.AE-03: Information is correlated from multiple sources\nDE.AE-04: The estimated impact and scope of adverse events are understood\nDE.AE-06: Information on adverse events is provided to authorized staff and tools\nDE.AE-07: Cyber threat intelligence and other contextual information are integrated into the analysis\nDE.AE-08: Incidents are declared when adverse events meet the defined incident criteria`\n},\n{\n  id: \"RS.MA\",\n  name: \"Incident Management\",\n  description: `Responses to detected cybersecurity incidents are managed\nSubcategories:\nRS.MA-01: The incident response plan is executed in coordination with relevant third parties once an incident is declared\nRS.MA-02: Incident reports are triaged and validated\nRS.MA-03: Incidents are categorized and prioritized\nRS.MA-04: Incidents are escalated or elevated as needed\nRS.MA-05: The criteria for initiating incident recovery are applied`\n},\n{\n  id: \"RS.AN\",\n  name: \"Incident Analysis\",\n  description: `Investigations are conducted to ensure effective response and support forensics and recovery activities\nSubcategories:\nRS.AN-03: Analysis is performed to establish what has taken place during an incident and the root cause of the incident\nRS.AN-06: Actions performed during an investigation are recorded, and the records' integrity and provenance are preserved\nRS.AN-07: Incident data and metadata are collected, and their integrity and provenance are preserved\nRS.AN-08: An incident's magnitude is estimated and validated`\n},\n{\n  id: \"RS.CO\",\n  name: \"Incident Response Reporting and Communication\",\n  description: `Response activities are coordinated with internal and external stakeholders as required by laws, regulations, or policies\nSubcategories:\nRS.CO-02: Internal and external stakeholders are notified of incidents\nRS.CO-03: Information is shared with designated internal and external stakeholders`\n},\n{\n  id: \"RS.MI\",\n  name: \"Incident Mitigation\",\n  description: `Activities are performed to prevent expansion of an event and mitigate its effects\nSubcategories:\nRS.MI-01: Incidents are contained\nRS.MI-02: Incidents are eradicated`\n},\n{\n  id: \"RC.RP\",\n  name: \"Incident Recovery Plan Execution\",\n  description: `Restoration activities are performed to ensure operational availability of systems and services affected by cybersecurity incidents\nSubcategories:\nRC.RP-01: The recovery portion of the incident response plan is executed once initiated from the incident response process\nRC.RP-02: Recovery actions are selected, scoped, prioritized, and performed\nRC.RP-03: The integrity of backups and other restoration assets is verified before using them for restoration\nRC.RP-04: Critical mission functions and cybersecurity risk management are considered to establish post-incident operational norms\nRC.RP-05: The integrity of restored assets is verified, systems and services are restored, and normal operating status is confirmed\nRC.RP-06: The end of incident recovery is declared based on criteria, and incident-related documentation is completed`\n},\n{\n  id: \"RC.CO\",\n  name: \"Incident Recovery Communication\",\n  description: `Restoration activities are coordinated with internal and external parties\nSubcategories:\nRC.CO-03: Recovery activities and progress in restoring operational capabilities are communicated to designated internal and external stakeholders\nRC.CO-04: Public updates on incident recovery are shared using approved methods and messaging`\n}\n];\n\nasync function embed(text) {\n  const res = await this.helpers.httpRequest({\n    method: 'POST',\n    url: endpoint,\n    headers: {\n      Authorization: `Bearer ${apiKey}`,\n      'Content-Type': 'application/json'\n    },\n    timeout: TIMEOUT,\n    json: true,\n    body: {\n      model: EMBED_MODEL,\n      input: text\n    }\n  });\n\n  return res.data?.[0]?.embedding;\n}\n\nconst results = [];\n\nfor (const cat of categories) {\n  const emb = await embed(cat.description);\n  await this.helpers.httpRequest({\n    method: 'POST',\n    url: `${SUPABASE_URL}/rest/v1/${TABLE}`,\n    headers: {\n      apikey: SUPABASE_KEY,\n      Authorization: `Bearer ${SUPABASE_KEY}`,\n      'Content-Type': 'application/json',\n      Prefer: 'resolution=merge-duplicates'\n    },\n    body: {\n      id: cat.id,\n      name: cat.name,\n      description: cat.description,\n      embedding: emb\n    },\n    json: true\n  });\n\n  results.push({ json: { id: cat.id, name: cat.name } });\n}\n\nreturn results;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [680, 760],
+      "id": "9207dd52-031f-4233-b43b-1429c9473ba3",
+      "name": "Create CSF Category Embeddings"
+    },
+    {
+      "parameters": {
+        "jsCode": "const SUPABASE_URL = $env.SUPABASE_URL.replace(/\\/$/, '');\nconst SUPABASE_KEY = $env.SUPABASE_SERVICE_ROLE_KEY;\nconst TABLE = 'csf_category_embeddings';\n\nfunction cosineSim(a, b) {\n  if (typeof b === 'string') {\n    try {\n      b = JSON.parse(b);\n    } catch (e) {\n      throw new Error(`Failed to parse category embedding: ${b}`);\n    }\n  }\n\n  if (!Array.isArray(a) || !Array.isArray(b)) {\n    throw new Error(`Invalid input to cosineSim. a or b not an array.`);\n  }\n\n  const dot = a.reduce((sum, ai, i) => sum + ai * b[i], 0);\n  const magA = Math.sqrt(a.reduce((sum, ai) => sum + ai * ai, 0));\n  const magB = Math.sqrt(b.reduce((sum, bi) => sum + bi * bi, 0));\n  return dot / (magA * magB);\n}\n\n// Fetch the 22 CSF category embeddings from Supabase\nconst categories = await this.helpers.httpRequest({\n  method: 'GET',\n  url: `${SUPABASE_URL}/rest/v1/${TABLE}?select=id,embedding`,\n  headers: {\n    apikey: SUPABASE_KEY,\n    Authorization: `Bearer ${SUPABASE_KEY}`\n  },\n  json: true\n});\n\nconst results = [];\n\nfor (const item of $input.all()) {\n  const chunkEmbedding = item.json.embedding;\n  const category_scores = {};\n\n  for (const cat of categories) {\n    const score = cosineSim(chunkEmbedding, cat.embedding);\n    category_scores[cat.id] = Math.round(score * 1000);\n  }\n\n  results.push({\n    json: {\n      ...item.json,\n      category_scores\n    }\n  });\n}\n\nreturn results;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [4860, 1399],
+      "id": "f4635461-e7b0-459a-9230-57d7e325bfa1",
+      "name": "Ground on NIST CSF Categories"
+    },
+    {
+      "parameters": {
+        "jsCode": "const out = [];\nconst rows = JSON.parse($input.item.json.concatenated_data);\n\nrows.forEach((row, index) => {\n  out.push({\n    json: {\n      content: JSON.stringify(row),         // 🧠 This is what gets embedded\n      heading: row.Index || `Row ${index}`, // or any useful field like row.Category\n      level: 1,\n      chunk_index: index\n    }\n  });\n});\n\nreturn out;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [3100, 1020],
+      "id": "7f2c95a1-a791-46ca-be10-afbca57d043f",
+      "name": "Adapt Structure"
+    },
+    {
+      "parameters": {
+        "content": "## 4) Maintenance\nRun these for quick maintenance"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [140, 2440],
+      "id": "f3a3aa59-11ef-4066-b7e4-6fa8d1eed806",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "CREATE TABLE IF NOT EXISTS documents_context (\n  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),\n  text TEXT NOT NULL,\n  embedding VECTOR(1536),\n  metadata JSONB,\n  company TEXT\n);",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [680, 100],
+      "id": "90f9cdde-5ab5-4fc7-bda7-aff4acc880ab",
+      "name": "Create Document Context Table",
+      "credentials": {
+        "postgres": {
+          "id": "LtUvizUisCSKWSoT",
+          "name": "Postgres Supabase"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [2000, 2045],
+      "id": "b5d629cd-6029-46d6-84e1-9c159d8a9244",
+      "name": "Loop"
+    },
+    {
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst path = require('path');\nconst os = require('os');\nconst util = require('util');\nconst { exec } = require('child_process');\nconst execPromise = util.promisify(exec);\n\n// Validate binary input\nconst bin = $input.item.binary?.data || $input.item.binary?.data_0;\nif (!bin?.data || !bin.fileName) {\n  throw new Error('Missing binary data or filename');\n}\n\n// Create safe temp directory\nconst tmpDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), 'upload-'));\n\n// Write original file (DOCX) to disk\nconst fileName = bin.fileName;\nconst inputPath = path.join(tmpDir, fileName);\nawait fs.promises.writeFile(inputPath, Buffer.from(bin.data, 'base64'));\n\n// Convert DOCX → PDF using LibreOffice\nconst cmd = `libreoffice --headless --convert-to pdf --outdir \"${tmpDir}\" \"${inputPath}\"`;\ntry {\n  const { stdout, stderr } = await execPromise(cmd);\n  console.log(\"LibreOffice stdout:\", stdout);\n  console.error(\"LibreOffice stderr:\", stderr);\n} catch (err) {\n  throw new Error(`❌ LibreOffice failed: ${err.message}`);\n}\n\n// Read converted PDF\nconst allFiles = await fs.promises.readdir(tmpDir);\nconst pdfFile = allFiles.find(f => f.toLowerCase().endsWith('.pdf'));\nif (!pdfFile) {\n  throw new Error(`❌ PDF was not created by LibreOffice. Expected at ${tmpDir}`);\n}\n\nconst pdfPath = path.join(tmpDir, pdfFile);\nconst pdfBuffer = await fs.promises.readFile(pdfPath);\n\nreturn [{\n  json: {\n    pdf_path: pdfPath,\n    output_dir: tmpDir,\n    base_name: path.basename(pdfFile, '.pdf'),\n  },\n  binary: {\n    data: {\n      data: pdfBuffer.toString('base64'),\n      mimeType: 'application/pdf',\n      fileName: pdfFile,\n    }\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2440, 1520],
+      "id": "b0a70b81-f1af-4177-999b-735e444cc075",
+      "name": "DOCX → PDF"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [460, 200],
+      "id": "b5e14c1c-48de-43ca-bcf3-d4f0eff8f50a",
+      "name": "Start"
+    }
+  ],
+  "connections": {
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Summarize",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarize": {
+      "main": [
+        [
+          {
+            "node": "Set Schema",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Adapt Structure",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Extract from Excel",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Extract from CSV",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "PDF -> PNG",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "PPTX -> PDF",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "DOCX → PDF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from Excel": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Insert Table Rows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Schema": {
+      "main": [
+        [
+          {
+            "node": "Update Schema for Document Metadata",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from CSV": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Insert Table Rows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Document Metadata Table": {
+      "main": [[]]
+    },
+    "Create Document Rows Table (for Tabular Data)": {
+      "main": [[]]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Delete Old Doc Records",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Insert Document Metadata": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insert Table Rows": {
+      "main": [
+        [
+          {
+            "node": "Loop",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete Old Doc Records": {
+      "main": [
+        [
+          {
+            "node": "Delete Old Data Records",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete Old Data Records": {
+      "main": [
+        [
+          {
+            "node": "Insert Document Metadata",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Save Original File to Supabase Storage",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retrieve Data": {
+      "main": [
+        [
+          {
+            "node": "Create Smart Chunks",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Chat History Table": {
+      "main": [[]]
+    },
+    "PPTX -> PDF": {
+      "main": [
+        [
+          {
+            "node": "PDF -> PNG",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Collect all image paths": {
+      "main": [
+        [
+          {
+            "node": "Get all image binaries",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get all image binaries": {
+      "main": [
+        [
+          {
+            "node": "PNG -> MD using AI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PNG -> MD using AI": {
+      "main": [
+        [
+          {
+            "node": "Save MD to Supabase Storage",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase | Get all files from bucket": {
+      "main": [[]]
+    },
+    "Supabase | Fetches all files": {
+      "main": [[]]
+    },
+    "Create Smart Chunks": {
+      "main": [
+        [
+          {
+            "node": "Create Embeddings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PDF -> PNG": {
+      "main": [
+        [
+          {
+            "node": "Collect all image paths",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Loop",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save MD to Supabase Storage": {
+      "main": [
+        [
+          {
+            "node": "Delete Temporary Folder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Original File to Supabase Storage": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete Temporary Folder": {
+      "main": [
+        [
+          {
+            "node": "Retrieve Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Embeddings": {
+      "main": [
+        [
+          {
+            "node": "Get Chunk Index",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Chunk Index": {
+      "main": [
+        [
+          {
+            "node": "Ground on NIST CSF Categories",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embed Chunks": {
+      "main": [
+        [
+          {
+            "node": "Loop",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create csf_category_embeddings table": {
+      "main": [
+        [
+          {
+            "node": "Create CSF Category Embeddings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ground on NIST CSF Categories": {
+      "main": [
+        [
+          {
+            "node": "Embed Chunks",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Adapt Structure": {
+      "main": [
+        [
+          {
+            "node": "Create Embeddings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DOCX → PDF": {
+      "main": [
+        [
+          {
+            "node": "PDF -> PNG",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Create Document Metadata Table",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Create Chat History Table",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Create Document Rows Table (for Tabular Data)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Create Document Context Table",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ab05c32f8e94331cd8255d6a3b748aa8912915e470c28d0e230fb292b2bee13b"
+  }
+}

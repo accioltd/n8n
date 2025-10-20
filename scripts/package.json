@@ -1,0 +1,27 @@
+{
+  "name": "n8n-nodes-c3drive-custom",
+  "version": "1.0.0",
+  "description": "Custom C3Drive nodes for n8n",
+  "private": true,
+  "main": "index.js",
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "nodes": [
+      "dist/C3Drive/C3DriveListFolders.node.js",
+      "dist/C3Drive/C3DriveListFiles.node.js",
+      "dist/C3Drive/C3DriveReadFile.node.js",
+      "dist/C3Drive/C3DriveSaveFile.node.js",
+      "dist/C3Embedder/C3Embedder.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^18.19.123",
+    "typescript": "^5.9.2"
+  },
+  "scripts": {
+    "clean": "rm -rf dist",
+    "copy-assets": "rsync -a --prune-empty-dirs --include '*/' --include '*.png' --include '*.svg' --include '*.sql' --include '*.py' --exclude '*' nodes/ dist/ && cp chunker.py extract.py dist/",
+    "build": "tsc && pnpm run copy-assets",
+    "postbuild": "docker compose --project-directory .. restart n8n"
+  }
+}
